@@ -216,6 +216,23 @@ section.page-section h2 {
   border-radius: 999px;
 }
 
+/* Information list */
+.info-list {
+  display: grid;
+  grid-template-columns: 100px 1fr;
+  gap: 10px 16px;
+  margin: 0;
+}
+
+.info-list dt {
+  font-weight: 700;
+  color: var(--color-text-muted);
+}
+
+.info-list dd {
+  margin: 0;
+}
+
 /* Case study (troubleshooting) blocks */
 .case-study dl {
   display: grid;
