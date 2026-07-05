@@ -122,8 +122,8 @@ a:hover { text-decoration: underline; }
 
 .profile-photo {
   display: block;
-  width: 140px;
-  height: 140px;
+  width: 168px;
+  height: 168px;
   object-fit: cover;
   border-radius: 50%;
   border: 3px solid var(--color-surface);
@@ -230,7 +230,7 @@ section.page-section h2 {
 /* Information list */
 .info-list {
   display: grid;
-  grid-template-columns: 100px 1fr;
+  grid-template-columns: 120px 1fr;
   gap: 10px 16px;
   margin: 0;
 }
@@ -242,6 +242,7 @@ section.page-section h2 {
 
 .info-list dd {
   margin: 0;
+  line-height: 1.5;
 }
 
 /* Case study (troubleshooting) blocks */
