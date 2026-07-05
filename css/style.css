@@ -227,6 +227,61 @@ section.page-section h2 {
   border-radius: 999px;
 }
 
+/* Skill proficiency bars */
+.skill-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.skill-item:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.skill-item:first-child {
+  padding-top: 0;
+}
+
+.skill-name {
+  flex: 0 0 260px;
+  font-weight: 600;
+  font-size: 0.92rem;
+}
+
+.skill-bar {
+  flex: 1 1 auto;
+  height: 8px;
+  background: var(--color-tag-bg);
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.skill-bar-fill {
+  height: 100%;
+  background: var(--color-accent);
+  border-radius: 999px;
+}
+
+.skill-percent {
+  flex: 0 0 44px;
+  text-align: right;
+  font-weight: 700;
+  font-size: 0.88rem;
+  color: var(--color-accent);
+}
+
+@media (max-width: 640px) {
+  .skill-item {
+    flex-wrap: wrap;
+  }
+  .skill-name {
+    flex: 1 1 100%;
+  }
+}
+
 /* Information list */
 .info-list {
   display: grid;
