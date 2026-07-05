@@ -122,10 +122,10 @@ a:hover { text-decoration: underline; }
 
 .profile-photo {
   display: block;
-  width: 168px;
-  height: 168px;
+  width: 150px;
+  height: 200px;
   object-fit: cover;
-  border-radius: 50%;
+  border-radius: 20px;
   border: 3px solid var(--color-surface);
   box-shadow: 0 0 0 1px var(--color-border);
   margin-bottom: 20px;
@@ -243,6 +243,21 @@ section.page-section h2 {
 .info-list dd {
   margin: 0;
   line-height: 1.5;
+}
+
+/* Work routine steps */
+.routine-steps {
+  margin: 0;
+  padding-left: 20px;
+}
+
+.routine-steps li {
+  margin-bottom: 10px;
+  line-height: 1.6;
+}
+
+.routine-steps li:last-child {
+  margin-bottom: 0;
 }
 
 /* Case study (troubleshooting) blocks */
