@@ -120,6 +120,17 @@ a:hover { text-decoration: underline; }
   padding: 64px 0 40px;
 }
 
+.profile-photo {
+  display: block;
+  width: 140px;
+  height: 140px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 3px solid var(--color-surface);
+  box-shadow: 0 0 0 1px var(--color-border);
+  margin-bottom: 20px;
+}
+
 .hero .eyebrow {
   color: var(--color-accent);
   font-weight: 600;
