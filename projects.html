@@ -21,64 +21,68 @@
 
 <main class="container">
   <section class="page-section">
-    <h2>Projects &amp; Troubleshooting Cases</h2>
-    <p class="meta">각 사례는 <strong>문제 &rarr; 원인분석 &rarr; 조치 &rarr; 결과</strong> 순으로 정리했습니다.</p>
+    <h2>Projects</h2>
+    <p class="meta">진행한 프로젝트를 정리합니다.</p>
 
-    <article class="card case-study">
-      <h3 class="todo">[사례 제목 1: 예) JBoss EAP 힙 메모리 부족으로 인한 서비스 장애 대응]</h3>
+    <article class="card">
+      <h3 class="todo">[프로젝트명 예) AI-Agent 기반 벡터 RAG 지식 데이터베이스 구축]</h3>
+      <p class="meta todo">[프로젝트 기간, 역할, 팀 구성 등]</p>
       <div class="tag-list">
-        <span class="tag">JBoss EAP</span>
         <span class="tag todo">관련 기술 태그</span>
       </div>
-      <dl>
-        <dt>문제</dt>
-        <dd class="todo">[증상, 발생 환경, 영향 범위를 서술]</dd>
-        <dt>원인분석</dt>
-        <dd class="todo">[로그/스레드덤프/힙덤프 등 분석 과정과 근본 원인]</dd>
-        <dt>조치</dt>
-        <dd class="todo">[적용한 조치와 근거]</dd>
-        <dt>결과</dt>
-        <dd class="todo">[장애 해결 여부, 재발 방지책, 정량적 효과(가능하면)]</dd>
+      <dl class="info-list">
+        <dt>개요</dt>
+        <dd class="todo">[프로젝트 배경과 목표]</dd>
+        <dt>역할</dt>
+        <dd class="todo">[담당 업무와 기여도]</dd>
+        <dt>성과</dt>
+        <dd class="todo">[결과물, 정량적 효과(가능하면)]</dd>
       </dl>
     </article>
+  </section>
 
-    <article class="card case-study">
-      <h3 class="todo">[사례 제목 2: 예) OpenShift 클러스터 노드 장애 트러블슈팅]</h3>
-      <div class="tag-list">
-        <span class="tag">OpenShift</span>
-        <span class="tag">Kubernetes</span>
-        <span class="tag todo">관련 기술 태그</span>
-      </div>
-      <dl>
-        <dt>문제</dt>
-        <dd class="todo">[증상, 발생 환경, 영향 범위를 서술]</dd>
-        <dt>원인분석</dt>
-        <dd class="todo">[분석 과정과 근본 원인]</dd>
-        <dt>조치</dt>
-        <dd class="todo">[적용한 조치와 근거]</dd>
-        <dt>결과</dt>
-        <dd class="todo">[해결 여부 및 재발 방지책]</dd>
-      </dl>
-    </article>
+  <section class="page-section">
+    <h2>Troubleshooting Case</h2>
+    <p class="meta">Career &amp; Skills 의 Skill 항목별로 분류했습니다. 카테고리를 클릭하면 관련 트러블슈팅 사례를 확인할 수 있습니다.</p>
 
-    <article class="card case-study">
-      <h3 class="todo">[사례 제목 3: 예) Apache/Tomcat 연동 구간 성능 저하 개선]</h3>
-      <div class="tag-list">
-        <span class="tag">Apache HTTP Server</span>
-        <span class="tag">Tomcat</span>
-        <span class="tag todo">관련 기술 태그</span>
-      </div>
-      <dl>
-        <dt>문제</dt>
-        <dd class="todo">[증상, 발생 환경, 영향 범위를 서술]</dd>
-        <dt>원인분석</dt>
-        <dd class="todo">[분석 과정과 근본 원인]</dd>
-        <dt>조치</dt>
-        <dd class="todo">[적용한 조치와 근거]</dd>
-        <dt>결과</dt>
-        <dd class="todo">[해결 여부 및 정량적 효과]</dd>
-      </dl>
-    </article>
+    <div class="category-grid">
+      <a class="category-card" href="troubleshooting-os.html">
+        <h3>OS</h3>
+        <p class="category-desc">Rocky / RHEL / CentOS</p>
+      </a>
+      <a class="category-card" href="troubleshooting-web.html">
+        <h3>WEB</h3>
+        <p class="category-desc">Apache HTTPD / JBCS / Nginx</p>
+      </a>
+      <a class="category-card" href="troubleshooting-was.html">
+        <h3>WAS</h3>
+        <p class="category-desc">Tomcat / JBoss EAP / JWS</p>
+      </a>
+      <a class="category-card" href="troubleshooting-network.html">
+        <h3>NetWork</h3>
+        <p class="category-desc">HTTP / TCP / 방화벽 / L4 Layer</p>
+      </a>
+      <a class="category-card" href="troubleshooting-paas.html">
+        <h3>PaaS Platform</h3>
+        <p class="category-desc">Kubernetes / OpenShift / Rancher</p>
+      </a>
+      <a class="category-card" href="troubleshooting-cicd.html">
+        <h3>CI/CD 도구</h3>
+        <p class="category-desc">Jenkins / ArgoCD / GitHub Actions / GitLab</p>
+      </a>
+      <a class="category-card" href="troubleshooting-collab.html">
+        <h3>기타 협업 도구</h3>
+        <p class="category-desc">Slack / Notion / Confluence / Jira 등</p>
+      </a>
+      <a class="category-card" href="troubleshooting-ai.html">
+        <h3>AI</h3>
+        <p class="category-desc">GPT / Gemini / Claude / MCP / RAG</p>
+      </a>
+      <a class="category-card" href="troubleshooting-monitoring.html">
+        <h3>모니터링툴 및 기타, 형상관리도구</h3>
+        <p class="category-desc">Git / Ansible / APM / Prometheus / Grafana / Loki</p>
+      </a>
+    </div>
   </section>
 </main>
 
