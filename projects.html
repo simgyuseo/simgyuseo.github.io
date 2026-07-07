@@ -21,10 +21,10 @@
 
 <main class="container">
   <section class="page-section">
-    <h2>Project&amp;TroubleShooting</h2>
+    <h2>Project</h2>
     <p class="meta">진행한 프로젝트를 정리합니다. 각 프로젝트를 클릭하면 상세 내용을 확인할 수 있습니다.</p>
 
-    <a class="card project-summary" href="project-kut-academic-rockylinux.html">
+    <article class="card">
       <h3>[한국기술교육대학][학사시스템] CentOS7.9 EOL로 인한 RockyOS 8.9 Apache/Tomcat/CLUSTER/APM 웹 시스템 재구축 프로젝트</h3>
       <p class="meta">2024.12.02 ~ 2025.01 · 인프라 엔지니어</p>
       <div class="tag-list">
@@ -33,8 +33,24 @@
         <span class="tag">Infinispan 7</span>
         <span class="tag">Rocky Linux 8.9</span>
       </div>
-      <p class="project-more">자세히 보기 &rarr;</p>
-    </a>
+      <dl class="info-list">
+        <dt>개요</dt>
+        <dd>
+          인프라 환경 이관: CentOS 7.9 EOL에 대응하여 Rocky Linux 8.9 VM 서버 기반의 신규 인프라 환경 수립.<br>
+          고가용성(HA) 아키텍처 구축: 학사 트래픽 분산을 위해 WEB 4대 - WAS 4대 구조의 로드밸런싱 설정 및 Infinispan 7을 이용한 세션 클러스터링(2대) 서버 연동.
+        </dd>
+        <dt>역할</dt>
+        <dd>인프라 엔지니어(RockyOS 8.9 VM 서버에 WEB 4대, WAS 4대, CLUSTER 2대, APM 1대 학사 웹시스템 설치 및 구성)</dd>
+        <dt>성과</dt>
+        <dd>
+          보안 및 운영 안정성 확보: EOL 대상 OS 이관을 통해 보안 취약점 리스크 제거 및 지속 가능한 오픈소스 운영 기반 마련.<br>
+          무중단 가용성 확보: 세션 클러스터링 환경 정밀 튜닝을 통해 특정 서버 다운 시에도 학사 서비스가 정상 유지되도록 가용성 극대화.
+        </dd>
+        <dt>개선점</dt>
+        <dd class="todo">[보완할 점 작성 예정]</dd>
+      </dl>
+      <a class="project-more" href="project-kut-academic-rockylinux.html">자세히 보기 &rarr;</a>
+    </article>
   </section>
 
   <section class="page-section">

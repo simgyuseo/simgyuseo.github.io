@@ -302,7 +302,7 @@ section.page-section h2 {
 
 /* Work routine steps */
 .routine-steps {
-  margin: 0;
+  margin: 16px 0 0;
   padding-left: 20px;
 }
 
@@ -332,21 +332,9 @@ section.page-section h2 {
   margin: 0;
 }
 
-/* Project summary card (links to detail page) */
-a.card.project-summary {
-  display: block;
-  color: var(--color-text);
-  transition: border-color 0.15s ease, transform 0.15s ease;
-}
-
-a.card.project-summary:hover {
-  border-color: var(--color-accent);
-  transform: translateY(-2px);
-  text-decoration: none;
-}
-
 .project-more {
-  margin: 12px 0 0;
+  display: inline-block;
+  margin: 16px 0 0;
   color: var(--color-accent);
   font-weight: 600;
   font-size: 0.9rem;
