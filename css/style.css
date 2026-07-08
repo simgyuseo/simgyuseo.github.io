@@ -377,6 +377,30 @@ section.page-section h2 {
   margin-bottom: 0;
 }
 
+.architecture-images {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.architecture-images figure {
+  margin: 0;
+  flex: 1 1 320px;
+}
+
+.architecture-images figcaption {
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.architecture-images img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  border-radius: 6px;
+  border: 1px solid var(--color-border);
+}
+
 .project-more {
   display: inline-block;
   margin-top: 20px;

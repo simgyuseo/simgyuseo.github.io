@@ -33,30 +33,23 @@
 
     <article class="card project-card">
       <dl class="project-detail">
-        <dt>개요</dt>
+        <dt>프로젝트 아키텍처</dt>
         <dd>
-          <ul class="detail-bullets">
-            <li>인프라 환경 이관: CentOS 7.9 EOL에 대응하여 Rocky Linux 8.9 VM 서버 기반의 신규 인프라 환경 수립.</li>
-            <li>고가용성(HA) 아키텍처 구축: 학사 트래픽 분산을 위해 WEB 4대 - WAS 4대 구조의 로드밸런싱 설정 및 Infinispan 7을 이용한 세션 클러스터링(2대) 서버 연동.</li>
-          </ul>
+          <div class="architecture-images">
+            <figure>
+              <figcaption>AS-IS</figcaption>
+              <img src="assets/kut-rockylinux89-as-is.png" alt="AS-IS 아키텍처">
+            </figure>
+            <figure>
+              <figcaption>TO-BE</figcaption>
+              <img src="assets/kut-rockylinux89-to-be.png" alt="TO-BE 아키텍처">
+            </figure>
+          </div>
         </dd>
-        <dt>역할</dt>
+        <dt>테스트 및 기술 정리</dt>
         <dd>
           <ul class="detail-bullets">
-            <li>인프라 엔지니어(RockyOS 8.9 VM 서버에 WEB 4대, WAS 4대, CLUSTER 2대, APM 1대 학사 웹시스템 설치 및 구성)</li>
-          </ul>
-        </dd>
-        <dt>성과</dt>
-        <dd>
-          <ul class="detail-bullets">
-            <li>보안 및 운영 안정성 확보: EOL 대상 OS 이관을 통해 보안 취약점 리스크 제거 및 지속 가능한 오픈소스 운영 기반 마련.</li>
-            <li>무중단 가용성 확보: 세션 클러스터링 환경 정밀 튜닝을 통해 특정 서버 다운 시에도 학사 서비스가 정상 유지되도록 가용성 극대화.</li>
-          </ul>
-        </dd>
-        <dt>개선점</dt>
-        <dd>
-          <ul class="detail-bullets">
-            <li>저는 WEB/WAS 환경 구축 초기에는 도입 대상 미들웨어(Apache/Tomcat) 자체의 버전 선정에 집중했습니다. 그러나 실제 구축 과정을 거치며 개별 버전을 넘어 OS &rarr; JDK &rarr; WAS &rarr; 애플리케이션으로 이어지는 전체 시스템 구성 요소 간의 종속성과 교차 호환성을 선제적으로 검증하는 것이 인프라 안정성의 핵심임을 체감했습니다. 반드시 사전에 종속성 및 교차 호환성 조사를 바탕으로 인프라 설계 시 시행착오를 최소화해야겠다고 느꼈습니다.</li>
+            <li class="todo">[작성 예정]</li>
           </ul>
         </dd>
       </dl>
