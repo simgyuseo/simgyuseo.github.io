@@ -386,6 +386,7 @@ section.page-section h2 {
 .architecture-images figure {
   margin: 0;
   flex: 1 1 320px;
+  min-width: 0;
 }
 
 .architecture-images figcaption {
@@ -395,7 +396,7 @@ section.page-section h2 {
 
 .architecture-images img {
   display: block;
-  max-width: 100%;
+  width: 100%;
   height: auto;
   border-radius: 6px;
   border: 1px solid var(--color-border);
