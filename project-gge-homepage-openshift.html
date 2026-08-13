@@ -42,21 +42,29 @@
           <ul class="detail-bullets">
             <li>Helm chart로 배포된 디플로이먼트 메모리 리소스 제한 Request/Limits 설정 지원</li>
             <li>운영 내부망 CLUSTER에 Jenkins CI 도구 설치</li>
-            <li>이슈 대응 및 트러블슈팅 지원(부사수역할): 파드 "v2-6-istio-cni": Unauthorized 문제 트러블슈팅</li>
-            <li>이슈 대응 및 트러블슈팅 지원(부사수역할): L4 장비로 트래픽이 들어올 때 IP가 접속한 클라이언트 IP 그대로 전달되는 상황에서, Client IP 대역과 Pod IP 대역이 겹쳐 외부로 응답이 나가지 못하고 내부 Pod IP 대역으로 라우팅되는 문제 트러블슈팅</li>
+            <li>이슈 대응 및 트러블슈팅 지원(부사수역할): 특정 파드 "v2-6-istio-cni": Unauthorized 에러 로그 발생 및 ContainerCreating 상태 유지 문제 트러블슈팅
+              <ul class="detail-bullets">
+                <li>해결 : 공식적으로는 OSSM 2.4 이상에서 해결된 사안이나, kubeconfig 파일의 인증 정보 갱신 실패 등 불안정 요소로 인해 OpenShift 4.16 클러스터 버전에서 발생할 수 있는 요소로 확인됨, istio-cni-node 파드 재기동으로 해결</li>
+              </ul>
+            </li>
+            <li>이슈 대응 및 트러블슈팅 지원(부사수역할): 특정 지역 교육청에서 L4 장비로 트래픽이 들어올 때 IP가 접속한 클라이언트 IP 그대로 전달되는 상황에서, Client IP 대역과 Pod IP 대역이 겹쳐 외부로 응답이 나가지 못하고 내부 Pod IP 대역으로만 응답이 무한 루프되는 문제 트러블슈팅
+              <ul class="detail-bullets">
+                <li>해결 : 실제 해당 지역 교육청에서 Pod가 사용하는 IP 대역과 겹쳐서 통신이 되지 않는 상황이었으며, Infra Node에서 Layer4 Packet의 SRC에 Client IP가 직접적으로 노출됨을 확인함. 정상적으로는 VIP가 노출되어야 하는 상황으로, 해당 지역 교육청에서 트래픽이 유입되는 L4 장비에 SNAT 설정을 적용하여 Pod IP 대역과 겹치지 않도록 조치함.</li>
+              </ul>
+            </li>
           </ul>
         </dd>
         <dt>성과</dt>
         <dd>
           <ul class="detail-bullets">
-            <li>지자체 교육기관 대상 홈페이지 재구축이라는 공공 웹서비스 인프라 프로젝트에서 OpenShift Cluster 구축 실무 경험을 축적함.</li>
-            <li>이전 국방부 프로젝트에서 쌓은 OpenShift 점검 경험을 실제 구축 단계 지원으로 확장하며 PaaS 플랫폼 운영에 대한 이해를 심화함.</li>
+            <li>Private OpenShift Cluster의 실무 안정적인 운영 경험을 축적함.</li>
+            <li>실제 운영상에 발생하는 Pod 기동 시 에러 로그 및 Kubernetes 플랫폼 네트워크 이슈 등을 트러블슈팅하며 안정적인 OpenShift 운영에 기여함.</li>
           </ul>
         </dd>
         <dt>개선점</dt>
         <dd>
           <ul class="detail-bullets">
-            <li>저는 이전 국방부 프로젝트에서는 오픈 전 점검 위주로 OpenShift 클러스터를 접했다면, 이번 프로젝트에서는 실제 구축 단계에서부터 참여하며 클러스터가 구성되는 전체 과정을 더 깊이 이해할 수 있었습니다. 앞으로는 부사수 역할을 넘어 클러스터 설계 단계부터 주도적으로 참여할 수 있는 역량을 갖추기 위해 Kubernetes/OpenShift 심화 학습을 지속해 나가고자 합니다.</li>
+            <li>아직 대규모 OpenShift Cluster를 운영하는 데 필요한 개념이 부족하다고 느껴, 실제 OpenShift 권장 아키텍처를 직접 구성해보고 Operator 등을 설치하며 학습을 지속하고 있습니다. 더 나아가 Kubernetes 기반 CI/CD 파이프라인 역량을 갖추기 위해 GitLab, Jenkins, ArgoCD를 직접 설치하며 지속적으로 학습해 나갈 계획입니다.</li>
           </ul>
         </dd>
       </dl>
