@@ -164,9 +164,10 @@
                 <li>해결 : 공식적으로는 OSSM 2.4 이상에서 해결된 사안이나 kubeconfig 파일의 인증 정보 갱신 실패 등 불안정 요소로 인해 OpenShift 4.16 클러스터 버전에서 발생할 수 있는 요소로 확인됨 istio-cni-node 파드 재기동으로 해결</li>
               </ul>
             </li>
-            <li>이슈 대응 및 트러블슈팅 지원(부사수역할): 특정 지역 교육청에서 L4 장비로 트래픽이 들어올 때 IP가 접속한 클라이언트 IP 그대로 전달되는 상황에서 Client IP 대역과 Pod IP 대역이 겹쳐 외부로 응답이 나가지 못하고 내부 Pod IP 대역으로만 응답이 무한 루프되는 문제 트러블슈팅
+            <li>이슈 대응 및 트러블슈팅 지원(부사수역할): 특정 지역 교육청에서 L4 장비로 외부 접속자인 Client IP 대역과 OpenShift Cluster 내부 Pod CIDR IP 대역이 똑같아, 서버가 외부로 응답을 못하고 클러스터 내부에서만 길을 잃고 무한루프가 발생한 상황
               <ul class="detail-bullets">
-                <li>해결 : 실제 해당 지역 교육청에서 Pod가 사용하는 IP 대역과 겹쳐서 통신이 되지 않는 상황이었으며 Infra Node에서 Layer4 Packet의 SRC에 Client IP가 직접적으로 노출됨을 확인함. 정상적으로는 VIP가 노출되어야 하는 상황으로 해당 지역 교육청에서 트래픽이 유입되는 L4 장비에 SNAT 설정을 적용하여 Pod IP 대역과 겹치지 않도록 조치함.</li>
+                <li>해결 : 실제 해당 지역 교육청에서 Pod가 사용하는 CIDR IP 대역과 겹쳐서 통신이 되지 않는 상황이었으며 Infra Node에서 Layer4 Packet의 SRC에 Client IP가 직접적으로 노출됨을 확인.
+정상적으로는 VIP가 노출되어야 하는 상황으로 해당 지역 교육청에서 트래픽이 유입되는 L4 장비에 SNAT(Source NAT, 출발지 네트워크 주소 변환) 설정을 적용하여 Pod IP 대역과 겹치지 않도록 조치.</li>
               </ul>
             </li>
           </ul>
