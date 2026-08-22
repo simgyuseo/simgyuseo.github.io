@@ -7,4 +7,15 @@ document.addEventListener("DOMContentLoaded", function () {
       links.classList.toggle("open");
     });
   }
+
+  var certToggles = document.querySelectorAll(".cert-toggle");
+  certToggles.forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      var target = document.getElementById(btn.getAttribute("aria-controls"));
+      if (!target) return;
+      var expanded = btn.getAttribute("aria-expanded") === "true";
+      btn.setAttribute("aria-expanded", String(!expanded));
+      target.hidden = expanded;
+    });
+  });
 });

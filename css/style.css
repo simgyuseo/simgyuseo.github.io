@@ -300,6 +300,75 @@ section.page-section h2 {
   line-height: 1.5;
 }
 
+/* Certificate list (toggle to view certificate image) */
+.cert-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.cert-item-plain {
+  padding: 8px 0 0;
+  color: var(--color-text);
+}
+
+.cert-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  width: 100%;
+  padding: 8px 0;
+  background: none;
+  border: none;
+  border-bottom: 1px dashed var(--color-border);
+  color: var(--color-text);
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.cert-toggle:hover,
+.cert-toggle:focus-visible {
+  color: var(--color-accent);
+}
+
+.cert-toggle-icon {
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 1px solid var(--color-border);
+  color: var(--color-text-muted);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s ease;
+}
+
+.cert-toggle-icon::before {
+  content: "+";
+}
+
+.cert-toggle[aria-expanded="true"] .cert-toggle-icon {
+  transform: rotate(45deg);
+}
+
+.cert-image {
+  padding: 10px 0 12px;
+}
+
+.cert-image img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+}
+
 /* Work routine steps */
 .routine-steps {
   margin: 16px 0 0;
