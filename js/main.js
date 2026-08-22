@@ -8,8 +8,8 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  var certToggles = document.querySelectorAll(".cert-toggle");
-  certToggles.forEach(function (btn) {
+  var toggleBtns = document.querySelectorAll(".toggle-btn");
+  toggleBtns.forEach(function (btn) {
     btn.addEventListener("click", function () {
       var target = document.getElementById(btn.getAttribute("aria-controls"));
       if (!target) return;

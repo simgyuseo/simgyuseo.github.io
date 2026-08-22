@@ -300,8 +300,8 @@ section.page-section h2 {
   line-height: 1.5;
 }
 
-/* Certificate list (toggle to view certificate image) */
-.cert-list {
+/* Toggle list (certificates, awards — click to view proof image) */
+.toggle-list {
   list-style: none;
   margin: 0;
   padding: 0;
@@ -310,12 +310,12 @@ section.page-section h2 {
   gap: 6px;
 }
 
-.cert-item-plain {
+.toggle-item-plain {
   padding: 8px 0 0;
   color: var(--color-text);
 }
 
-.cert-toggle {
+.toggle-btn {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -331,12 +331,12 @@ section.page-section h2 {
   cursor: pointer;
 }
 
-.cert-toggle:hover,
-.cert-toggle:focus-visible {
+.toggle-btn:hover,
+.toggle-btn:focus-visible {
   color: var(--color-accent);
 }
 
-.cert-toggle-icon {
+.toggle-icon {
   flex-shrink: 0;
   width: 20px;
   height: 20px;
@@ -349,19 +349,19 @@ section.page-section h2 {
   transition: transform 0.2s ease;
 }
 
-.cert-toggle-icon::before {
+.toggle-icon::before {
   content: "+";
 }
 
-.cert-toggle[aria-expanded="true"] .cert-toggle-icon {
+.toggle-btn[aria-expanded="true"] .toggle-icon {
   transform: rotate(45deg);
 }
 
-.cert-image {
+.toggle-panel {
   padding: 10px 0 12px;
 }
 
-.cert-image img {
+.toggle-panel img {
   max-width: 100%;
   height: auto;
   display: block;
