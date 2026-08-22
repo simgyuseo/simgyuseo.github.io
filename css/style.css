@@ -300,6 +300,10 @@ section.page-section h2 {
   line-height: 1.5;
 }
 
+.info-list dd.info-list-gap-after {
+  margin-bottom: 16px;
+}
+
 /* Toggle list (certificates, awards — click to view proof image) */
 .toggle-list {
   list-style: none;
