@@ -1,0 +1,261 @@
+{
+  "schema_version": 1,
+  "diagram_type": "architecture",
+  "meta": {
+    "title": "사회보장정보원 원내교육관리시스템 TO-BE 구성도",
+    "quality_profile": "standard",
+    "viewBox": [
+      1470,
+      580
+    ]
+  },
+  "components": [
+    {
+      "id": "web1",
+      "type": "backend",
+      "label": "WEB1",
+      "sublabel": "edu.ssis.or.kr · eduadmin.ssis.or.kr",
+      "pos": [
+        70,
+        120
+      ],
+      "size": [
+        320,
+        110
+      ]
+    },
+    {
+      "id": "web2",
+      "type": "backend",
+      "label": "WEB2",
+      "sublabel": "edu.ssis.or.kr · eduadmin.ssis.or.kr",
+      "pos": [
+        70,
+        360
+      ],
+      "size": [
+        320,
+        110
+      ]
+    },
+    {
+      "id": "was1",
+      "type": "backend",
+      "label": "WAS1",
+      "sublabel": "new-eLMS · new-eLMSadm",
+      "pos": [
+        580,
+        100
+      ],
+      "size": [
+        330,
+        120
+      ]
+    },
+    {
+      "id": "was2",
+      "type": "backend",
+      "label": "WAS2",
+      "sublabel": "new-eLMS · new-eLMSadm",
+      "pos": [
+        580,
+        380
+      ],
+      "size": [
+        330,
+        120
+      ]
+    },
+    {
+      "id": "session1",
+      "type": "messagebus",
+      "label": "Session Server1 (Infinispan 7)",
+      "sublabel": "세션 클러스터링 (신규)",
+      "pos": [
+        1015,
+        105
+      ],
+      "size": [
+        215,
+        110
+      ]
+    },
+    {
+      "id": "session2",
+      "type": "messagebus",
+      "label": "Session Server2 (Infinispan 7)",
+      "sublabel": "세션 클러스터링 (신규)",
+      "pos": [
+        1015,
+        385
+      ],
+      "size": [
+        215,
+        110
+      ]
+    },
+    {
+      "id": "apm",
+      "type": "backend",
+      "label": "APM",
+      "sublabel": "WAS 모니터링 (신규)",
+      "pos": [
+        1255,
+        245
+      ],
+      "size": [
+        170,
+        110
+      ]
+    }
+  ],
+  "boundaries": [
+    {
+      "kind": "region",
+      "label": "DMZ",
+      "wraps": [
+        "web1",
+        "web2"
+      ],
+      "pad": 28
+    },
+    {
+      "kind": "region",
+      "label": "원내시스템",
+      "wraps": [
+        "was1",
+        "was2",
+        "session1",
+        "session2",
+        "apm"
+      ],
+      "pad": 28
+    }
+  ],
+  "connections": [
+    {
+      "id": "web1-was1",
+      "from": "web1",
+      "to": "was1",
+      "label": "요청 분산",
+      "variant": "emphasis",
+      "fromSide": "right",
+      "toSide": "left",
+      "labelAt": [
+        485,
+        130
+      ]
+    },
+    {
+      "id": "web1-was2",
+      "from": "web1",
+      "to": "was2",
+      "fromSide": "right",
+      "toSide": "left"
+    },
+    {
+      "id": "web2-was1",
+      "from": "web2",
+      "to": "was1",
+      "fromSide": "right",
+      "toSide": "left"
+    },
+    {
+      "id": "web2-was2",
+      "from": "web2",
+      "to": "was2",
+      "label": "요청 분산",
+      "variant": "emphasis",
+      "fromSide": "right",
+      "toSide": "left",
+      "labelAt": [
+        485,
+        452
+      ]
+    },
+    {
+      "id": "apm-was1",
+      "from": "apm",
+      "to": "was1",
+      "variant": "dashed",
+      "fromSide": "left",
+      "toSide": "right",
+      "via": [
+        [
+          960,
+          300
+        ],
+        [
+          960,
+          160
+        ]
+      ]
+    },
+    {
+      "id": "apm-was2",
+      "from": "apm",
+      "to": "was2",
+      "variant": "dashed",
+      "fromSide": "left",
+      "toSide": "right",
+      "via": [
+        [
+          960,
+          300
+        ],
+        [
+          960,
+          440
+        ]
+      ]
+    },
+    {
+      "id": "session1-was1",
+      "from": "session1",
+      "to": "was1",
+      "variant": "dashed",
+      "fromSide": "left",
+      "toSide": "right"
+    },
+    {
+      "id": "session2-was2",
+      "from": "session2",
+      "to": "was2",
+      "variant": "dashed",
+      "fromSide": "left",
+      "toSide": "right"
+    }
+  ],
+  "cards": [
+    {
+      "dot": "cyan",
+      "title": "전환 개요",
+      "items": [
+        "AS-IS — WEB: WebtoB 4.1 × 2 · WAS: JEUS 6.0 × 2",
+        "TO-BE — WAS: Tomcat 8.5.84 · Session Server: Infinispan 13 → 7",
+        "WEB · WAS · Infinispan · APM 전 구간 RockyOS 9.6",
+        "애플리케이션: new-eLMS(교육) · new-eLMSadm(관리자)"
+      ]
+    },
+    {
+      "dot": "emerald",
+      "title": "서버 구성",
+      "items": [
+        "WEB 서버 2대",
+        "WAS 서버 2대 · Tomcat 8.5.84",
+        "Session Server 2대 · Infinispan 7 · 신규(세션 클러스터링)",
+        "APM 서버 1대 · 신규(WAS 모니터링)"
+      ]
+    },
+    {
+      "dot": "slate",
+      "title": "트래픽 · 부가 구성",
+      "items": [
+        "WEB1 · WEB2 → WAS1 · WAS2 교차 분산으로 요청 분배",
+        "Session Server가 WAS 세션을 클러스터링해 세션 유실 방지",
+        "APM이 WAS1 · WAS2 상태를 모니터링",
+        "세션 클러스터링 · 모니터링 연결은 비고 기준(구성도 미도시)"
+      ]
+    }
+  ]
+}

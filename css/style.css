@@ -490,6 +490,10 @@ section.page-section h2 {
   margin-top: 28px;
 }
 
+.detail-bullets + .architecture-diagram {
+  margin-top: 20px;
+}
+
 .architecture-diagram figcaption {
   font-weight: 600;
   margin-bottom: 8px;
