@@ -1,0 +1,246 @@
+{
+  "schema_version": 1,
+  "diagram_type": "architecture",
+  "meta": {
+    "title": "직업능력심사평가원 TO-BE (Rocky Linux 9.4)",
+    "quality_profile": "standard",
+    "viewBox": [
+      1200,
+      720
+    ]
+  },
+  "components": [
+    {
+      "id": "user",
+      "type": "external",
+      "label": "USER",
+      "sublabel": "사용자 요청",
+      "pos": [
+        500,
+        24
+      ],
+      "size": [
+        170,
+        54
+      ]
+    },
+    {
+      "id": "l4",
+      "type": "cloud",
+      "label": "L4 SW",
+      "sublabel": "부하 분산",
+      "pos": [
+        485,
+        150
+      ],
+      "size": [
+        200,
+        56
+      ]
+    },
+    {
+      "id": "web1",
+      "type": "backend",
+      "label": "WEB01 · Apache 2.4.52",
+      "sublabel": "HTTPD / Rocky 9.4",
+      "pos": [
+        150,
+        276
+      ],
+      "size": [
+        270,
+        78
+      ]
+    },
+    {
+      "id": "web2",
+      "type": "backend",
+      "label": "WEB02 · Apache 2.4.52",
+      "sublabel": "HTTPD / Rocky 9.4",
+      "pos": [
+        740,
+        276
+      ],
+      "size": [
+        270,
+        78
+      ]
+    },
+    {
+      "id": "was1",
+      "type": "backend",
+      "label": "WAS01 · Tomcat 9.0.64",
+      "sublabel": "instance1 · instance2 · OpenJDK 1.8 / Rocky 9.4",
+      "pos": [
+        150,
+        428
+      ],
+      "size": [
+        270,
+        90
+      ]
+    },
+    {
+      "id": "was2",
+      "type": "backend",
+      "label": "WAS02 · Tomcat 9.0.64",
+      "sublabel": "instance1 · instance2 · OpenJDK 1.8 / Rocky 9.4",
+      "pos": [
+        740,
+        428
+      ],
+      "size": [
+        270,
+        90
+      ]
+    },
+    {
+      "id": "masterdb",
+      "type": "database",
+      "label": "Master DB",
+      "sublabel": "Oracle",
+      "pos": [
+        290,
+        592
+      ],
+      "size": [
+        200,
+        72
+      ]
+    },
+    {
+      "id": "slavedb",
+      "type": "database",
+      "label": "Slave DB",
+      "sublabel": "Oracle · 복제",
+      "pos": [
+        700,
+        592
+      ],
+      "size": [
+        200,
+        72
+      ]
+    }
+  ],
+  "boundaries": [
+    {
+      "kind": "region",
+      "label": "서비스 5종 (홈페이지 · 관리자 · 부정훈련관리 · 원격훈련심사 · 리포트)",
+      "wraps": [
+        "web1",
+        "web2",
+        "was1",
+        "was2"
+      ],
+      "pad": 22
+    }
+  ],
+  "connections": [
+    {
+      "id": "user-l4",
+      "from": "user",
+      "to": "l4",
+      "label": "HTTPS",
+      "variant": "emphasis",
+      "fromSide": "bottom",
+      "toSide": "top",
+      "labelDy": 26
+    },
+    {
+      "id": "l4-web1",
+      "from": "l4",
+      "to": "web1",
+      "label": "L4 분산",
+      "fromSide": "bottom",
+      "toSide": "top"
+    },
+    {
+      "id": "l4-web2",
+      "from": "l4",
+      "to": "web2",
+      "label": "L4 분산",
+      "fromSide": "bottom",
+      "toSide": "top"
+    },
+    {
+      "id": "web1-was1",
+      "from": "web1",
+      "to": "was1",
+      "label": "AJP (mod_jk)",
+      "fromSide": "bottom",
+      "toSide": "top",
+      "labelDy": 24
+    },
+    {
+      "id": "web2-was2",
+      "from": "web2",
+      "to": "was2",
+      "label": "AJP (mod_jk)",
+      "fromSide": "bottom",
+      "toSide": "top",
+      "labelDy": 24
+    },
+    {
+      "id": "web1-was2",
+      "from": "web1",
+      "to": "was2",
+      "label": "교차 분산",
+      "fromSide": "bottom",
+      "toSide": "top",
+      "labelDy": 60
+    },
+    {
+      "id": "web2-was1",
+      "from": "web2",
+      "to": "was1",
+      "fromSide": "bottom",
+      "toSide": "top"
+    },
+    {
+      "id": "was1-db",
+      "from": "was1",
+      "to": "masterdb",
+      "label": "JDBC",
+      "fromSide": "bottom",
+      "toSide": "top",
+      "labelDy": 20
+    },
+    {
+      "id": "was2-db",
+      "from": "was2",
+      "to": "masterdb",
+      "label": "JDBC",
+      "fromSide": "bottom",
+      "toSide": "right"
+    },
+    {
+      "id": "db-repl",
+      "from": "masterdb",
+      "to": "slavedb",
+      "label": "Master-Slave 복제",
+      "variant": "dashed",
+      "fromSide": "right",
+      "toSide": "left"
+    }
+  ],
+  "cards": [
+    {
+      "dot": "emerald",
+      "title": "이관 성과",
+      "items": [
+        "OS 이관: CentOS 7.9 → Rocky Linux 9.4, 보안 취약점 리스크 제거",
+        "WAS 서버별 멀티 인스턴스(2ea)로 고가용성(HA) 확보",
+        "Apache 2.4.52 · Tomcat 9.0.64 · OpenJDK 1.8 · Rocky Linux 9.4"
+      ]
+    },
+    {
+      "dot": "slate",
+      "title": "서비스별 예외",
+      "items": [
+        "원격훈련심사시스템: Apache 2.4.63 · Tomcat 9.0.102",
+        "리포트: WEB/WAS를 하나의 VM에 함께 구성"
+      ]
+    }
+  ]
+}

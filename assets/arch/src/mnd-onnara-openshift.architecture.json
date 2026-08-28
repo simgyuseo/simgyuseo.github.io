@@ -1,0 +1,477 @@
+{
+  "schema_version": 1,
+  "diagram_type": "architecture",
+  "meta": {
+    "title": "국방 온나라 2.0 공군 OpenShift · APM 아키텍처",
+    "quality_profile": "standard",
+    "viewBox": [
+      1300,
+      800
+    ]
+  },
+  "components": [
+    {
+      "id": "vipl7",
+      "type": "cloud",
+      "label": "L7 VIP",
+      "sublabel": "서비스 트래픽",
+      "pos": [
+        40,
+        96
+      ],
+      "size": [
+        170,
+        66
+      ]
+    },
+    {
+      "id": "vipl4",
+      "type": "cloud",
+      "label": "L4 VIP",
+      "sublabel": "관리 트래픽",
+      "pos": [
+        40,
+        360
+      ],
+      "size": [
+        170,
+        66
+      ]
+    },
+    {
+      "id": "bastion1",
+      "type": "security",
+      "label": "Bastion #1",
+      "sublabel": "운영 · 사전 점검 / VM",
+      "pos": [
+        40,
+        600
+      ],
+      "size": [
+        170,
+        52
+      ]
+    },
+    {
+      "id": "bastion2",
+      "type": "security",
+      "label": "Bastion #2",
+      "sublabel": "운영 · 사전 점검 / VM",
+      "pos": [
+        40,
+        664
+      ],
+      "size": [
+        170,
+        52
+      ]
+    },
+    {
+      "id": "route1",
+      "type": "backend",
+      "label": "Route Node #1",
+      "sublabel": "OpenShift Router / VM",
+      "pos": [
+        280,
+        40
+      ],
+      "size": [
+        200,
+        52
+      ]
+    },
+    {
+      "id": "route2",
+      "type": "backend",
+      "label": "Route Node #2",
+      "sublabel": "OpenShift Router / VM",
+      "pos": [
+        280,
+        104
+      ],
+      "size": [
+        200,
+        52
+      ]
+    },
+    {
+      "id": "route3",
+      "type": "backend",
+      "label": "Route Node #3",
+      "sublabel": "OpenShift Router / VM",
+      "pos": [
+        280,
+        168
+      ],
+      "size": [
+        200,
+        52
+      ]
+    },
+    {
+      "id": "route4",
+      "type": "backend",
+      "label": "Route Node #4",
+      "sublabel": "OpenShift Router / VM",
+      "pos": [
+        280,
+        232
+      ],
+      "size": [
+        200,
+        52
+      ]
+    },
+    {
+      "id": "infra1",
+      "type": "backend",
+      "label": "Infra Node #1",
+      "sublabel": "Ingress Controller / VM",
+      "pos": [
+        280,
+        340
+      ],
+      "size": [
+        200,
+        52
+      ]
+    },
+    {
+      "id": "infra2",
+      "type": "backend",
+      "label": "Infra Node #2",
+      "sublabel": "Ingress Controller / VM",
+      "pos": [
+        280,
+        404
+      ],
+      "size": [
+        200,
+        52
+      ]
+    },
+    {
+      "id": "infra3",
+      "type": "backend",
+      "label": "Infra Node #3",
+      "sublabel": "Ingress Controller / VM",
+      "pos": [
+        280,
+        468
+      ],
+      "size": [
+        200,
+        52
+      ]
+    },
+    {
+      "id": "master1",
+      "type": "backend",
+      "label": "Master Node #1",
+      "sublabel": "ETCD / VM",
+      "pos": [
+        280,
+        600
+      ],
+      "size": [
+        200,
+        52
+      ]
+    },
+    {
+      "id": "master2",
+      "type": "backend",
+      "label": "Master Node #2",
+      "sublabel": "ETCD / VM",
+      "pos": [
+        280,
+        664
+      ],
+      "size": [
+        200,
+        52
+      ]
+    },
+    {
+      "id": "master3",
+      "type": "backend",
+      "label": "Master Node #3",
+      "sublabel": "ETCD / VM",
+      "pos": [
+        280,
+        728
+      ],
+      "size": [
+        200,
+        52
+      ]
+    },
+    {
+      "id": "worker",
+      "type": "backend",
+      "label": "Worker Node #1~24",
+      "sublabel": "Workloads / Bare Metal",
+      "pos": [
+        610,
+        250
+      ],
+      "size": [
+        250,
+        300
+      ]
+    },
+    {
+      "id": "onnaraAp1",
+      "type": "backend",
+      "label": "온나라 AP #1",
+      "sublabel": "온나라 2.0 AP / VM",
+      "pos": [
+        900,
+        40
+      ],
+      "size": [
+        250,
+        50
+      ]
+    },
+    {
+      "id": "onnaraAp2",
+      "type": "backend",
+      "label": "온나라 AP #2",
+      "sublabel": "온나라 2.0 AP / VM",
+      "pos": [
+        900,
+        100
+      ],
+      "size": [
+        250,
+        50
+      ]
+    },
+    {
+      "id": "batch",
+      "type": "backend",
+      "label": "배치 서버 #1~6",
+      "sublabel": "배치 처리 / VM",
+      "pos": [
+        900,
+        168
+      ],
+      "size": [
+        250,
+        50
+      ]
+    },
+    {
+      "id": "config",
+      "type": "backend",
+      "label": "형상 서버 #1",
+      "sublabel": "형상 관리 / VM",
+      "pos": [
+        900,
+        228
+      ],
+      "size": [
+        250,
+        50
+      ]
+    },
+    {
+      "id": "apm1",
+      "type": "backend",
+      "label": "APM 서버 #1",
+      "sublabel": "실시간 성능·트래픽 관제 / VM",
+      "pos": [
+        900,
+        300
+      ],
+      "size": [
+        250,
+        50
+      ]
+    },
+    {
+      "id": "apm2",
+      "type": "backend",
+      "label": "APM 서버 #2",
+      "sublabel": "실시간 성능·트래픽 관제 / VM",
+      "pos": [
+        900,
+        362
+      ],
+      "size": [
+        250,
+        50
+      ]
+    },
+    {
+      "id": "apm3",
+      "type": "backend",
+      "label": "APM 서버 #3",
+      "sublabel": "실시간 성능·트래픽 관제 / VM",
+      "pos": [
+        900,
+        424
+      ],
+      "size": [
+        250,
+        50
+      ]
+    },
+    {
+      "id": "apm4",
+      "type": "backend",
+      "label": "APM 서버 #4",
+      "sublabel": "실시간 성능·트래픽 관제 / VM",
+      "pos": [
+        900,
+        486
+      ],
+      "size": [
+        250,
+        50
+      ]
+    },
+    {
+      "id": "nas",
+      "type": "database",
+      "label": "NAS",
+      "sublabel": "백업망 공유 스토리지",
+      "pos": [
+        610,
+        640
+      ],
+      "size": [
+        250,
+        56
+      ]
+    }
+  ],
+  "boundaries": [
+    {
+      "kind": "security-group",
+      "label": "OpenShift Cluster",
+      "wraps": [
+        "route1",
+        "route2",
+        "route3",
+        "route4",
+        "infra1",
+        "infra2",
+        "infra3",
+        "master1",
+        "master2",
+        "master3",
+        "worker"
+      ],
+      "pad": 22
+    }
+  ],
+  "connections": [
+    {
+      "id": "vipl7-route",
+      "from": "vipl7",
+      "to": "route1",
+      "label": "HTTPS :443",
+      "variant": "emphasis",
+      "fromSide": "right",
+      "toSide": "left",
+      "labelDy": -8
+    },
+    {
+      "id": "vipl4-infra",
+      "from": "vipl4",
+      "to": "infra2",
+      "label": "L4",
+      "fromSide": "right",
+      "toSide": "left"
+    },
+    {
+      "id": "route-worker",
+      "from": "route4",
+      "to": "worker",
+      "label": "Ingress",
+      "fromSide": "right",
+      "toSide": "left",
+      "labelAt": [
+        548,
+        250
+      ]
+    },
+    {
+      "id": "infra-worker",
+      "from": "infra3",
+      "to": "worker",
+      "fromSide": "right",
+      "toSide": "left"
+    },
+    {
+      "id": "master-worker",
+      "from": "master1",
+      "to": "worker",
+      "fromSide": "right",
+      "toSide": "left"
+    },
+    {
+      "id": "bastion-master",
+      "from": "bastion1",
+      "to": "master1",
+      "label": "운영·점검 SSH",
+      "fromSide": "right",
+      "toSide": "left"
+    },
+    {
+      "id": "onnara-worker",
+      "from": "onnaraAp2",
+      "to": "worker",
+      "variant": "dashed",
+      "fromSide": "left",
+      "toSide": "top"
+    },
+    {
+      "id": "batch-worker",
+      "from": "batch",
+      "to": "worker",
+      "variant": "dashed",
+      "fromSide": "left",
+      "toSide": "right"
+    },
+    {
+      "id": "apm-worker",
+      "from": "apm1",
+      "to": "worker",
+      "label": "관제",
+      "variant": "dashed",
+      "fromSide": "left",
+      "toSide": "right"
+    },
+    {
+      "id": "worker-nas",
+      "from": "worker",
+      "to": "nas",
+      "label": "App / NAS 스토리지",
+      "fromSide": "bottom",
+      "toSide": "top",
+      "labelDy": 24
+    }
+  ],
+  "cards": [
+    {
+      "dot": "emerald",
+      "title": "대규모 Private OpenShift",
+      "items": [
+        "Route Node #1~4 (L7 Ingress) · Infra Node #1~3 (L4) · Master Node #1~3 (ETCD), 모두 VM",
+        "Worker Node #1~24 (Workloads, Bare Metal), L7 VIP / L4 VIP로 유입 이중화",
+        "온나라 AP #1~2 · 배치 서버 #1~6 · 형상 서버 #1 (VM) 연계, 백업망 NAS 공유 스토리지"
+      ]
+    },
+    {
+      "dot": "amber",
+      "title": "부사수 역할",
+      "items": [
+        "오픈 전 클러스터 사전 점검: 노드 상태 · 리소스 할당량 · Pod 배포 검증 (Bastion #1·#2)",
+        "APM 서버 #1~4로 오픈 당일 실시간 성능 지표 · 트래픽 유입량 관제"
+      ]
+    }
+  ]
+}

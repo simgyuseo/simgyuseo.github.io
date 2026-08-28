@@ -1,0 +1,57 @@
+{
+  "schema_version": 1,
+  "diagram_type": "architecture",
+  "meta": {
+    "title": "경기도교육청 OpenShift Cluster 아키텍처",
+    "quality_profile": "standard",
+    "viewBox": [1200, 860]
+  },
+  "components": [
+    { "id": "extlb", "type": "cloud", "label": "L4 (서비스)", "sublabel": ":80 / :443", "pos": [470, 30], "size": [240, 48] },
+    { "id": "infra1", "type": "backend", "label": "Infra Node #1", "sublabel": "Ingress Router / RHCOS", "pos": [420, 132], "size": [170, 64] },
+    { "id": "infra2", "type": "backend", "label": "Infra Node #2", "sublabel": "Ingress Router / RHCOS", "pos": [610, 132], "size": [170, 64] },
+    { "id": "pc", "type": "external", "label": "작업자 PC", "sublabel": "운영·배포", "pos": [40, 268], "size": [150, 64] },
+    { "id": "bastion", "type": "security", "label": "Bastion Server", "sublabel": "RHEL 9 · SSH :22", "pos": [250, 268], "size": [200, 64] },
+    { "id": "bootstrap", "type": "backend", "label": "BootStrap Server (VM)", "sublabel": "설치 시 임시 / RHCOS", "pos": [900, 268], "size": [230, 64] },
+    { "id": "intlb", "type": "cloud", "label": "L4 (관리·내부)", "sublabel": ":6443 / :22623", "pos": [250, 388], "size": [200, 58] },
+    { "id": "master1", "type": "backend", "label": "Master Node #1", "sublabel": "ETCD / RHCOS", "pos": [200, 486], "size": [160, 62] },
+    { "id": "master2", "type": "backend", "label": "Master Node #2", "sublabel": "ETCD / RHCOS", "pos": [200, 560], "size": [160, 62] },
+    { "id": "master3", "type": "backend", "label": "Master Node #3", "sublabel": "ETCD / RHCOS", "pos": [200, 634], "size": [160, 62] },
+    { "id": "worker1", "type": "backend", "label": "Worker Node #1", "sublabel": "Workloads / RHCOS", "pos": [740, 486], "size": [170, 62] },
+    { "id": "worker2", "type": "backend", "label": "Worker Node #2", "sublabel": "Workloads / RHCOS", "pos": [740, 560], "size": [170, 62] },
+    { "id": "worker3", "type": "backend", "label": "Worker Node #3", "sublabel": "Workloads / RHCOS", "pos": [740, 634], "size": [170, 62] },
+    { "id": "imgstore", "type": "database", "label": "Image Storage", "sublabel": "각 노드 Local Disk", "pos": [210, 748], "size": [180, 54] },
+    { "id": "sharedstore", "type": "database", "label": "App / NAS Storage", "sublabel": "Shared", "pos": [725, 748], "size": [200, 54] }
+  ],
+  "boundaries": [
+    { "kind": "region", "label": "외부", "wraps": ["extlb"], "pad": 18 },
+    { "kind": "security-group", "label": "DMZ", "wraps": ["infra1", "infra2"], "pad": 20 },
+    { "kind": "region", "label": "내부 (사내망)", "wraps": ["pc", "bastion", "bootstrap", "intlb", "master1", "master2", "master3", "worker1", "worker2", "worker3", "imgstore", "sharedstore"], "pad": 24 }
+  ],
+  "connections": [
+    { "id": "ext-infra1", "from": "extlb", "to": "infra1", "label": ":80 / :443", "variant": "emphasis", "fromSide": "bottom", "toSide": "top", "labelDy": 18 },
+    { "id": "ext-infra2", "from": "extlb", "to": "infra2", "variant": "emphasis", "fromSide": "bottom", "toSide": "top" },
+    { "id": "infra1-worker", "from": "infra1", "to": "worker1", "label": "Ingress (SDN)", "fromSide": "bottom", "toSide": "top", "labelAt": [865, 430] },
+    { "id": "pc-bastion", "from": "pc", "to": "bastion", "label": "SSH :22", "fromSide": "right", "toSide": "left" },
+    { "id": "bastion-boot", "from": "bastion", "to": "bootstrap", "label": "설치 시 임시", "variant": "dashed", "fromSide": "right", "toSide": "left", "labelDx": -120 },
+    { "id": "bastion-intlb", "from": "bastion", "to": "intlb", "label": "관리 트래픽", "fromSide": "bottom", "toSide": "top", "labelDy": 22 },
+    { "id": "boot-worker", "from": "bootstrap", "to": "worker1", "label": "Worker 임시", "variant": "dashed", "fromSide": "bottom", "toSide": "right" },
+    { "id": "intlb-master1", "from": "intlb", "to": "master1", "label": ":6443 / :22623", "fromSide": "bottom", "toSide": "top", "labelDy": 18 },
+    { "id": "intlb-master2", "from": "intlb", "to": "master2", "fromSide": "bottom", "toSide": "left" },
+    { "id": "intlb-master3", "from": "intlb", "to": "master3", "fromSide": "bottom", "toSide": "left" },
+    { "id": "master-worker", "from": "master1", "to": "worker1", "label": "노드 제어 (API)", "fromSide": "right", "toSide": "left" },
+    { "id": "master-img", "from": "master3", "to": "imgstore", "label": "이미지", "fromSide": "bottom", "toSide": "top", "labelDy": 34 },
+    { "id": "worker-shared", "from": "worker3", "to": "sharedstore", "label": "App / NAS", "fromSide": "bottom", "toSide": "top", "labelDy": 34 }
+  ],
+  "cards": [
+    { "dot": "emerald", "title": "네트워크 · OpenShift 4.16", "items": [
+      "외부 L4(:80/:443) → DMZ Infra Node #1·#2 → 내부 Worker Node #1~3 (Ingress/SDN)",
+      "관리 트래픽은 내부 L4(:6443/:22623) 경유, Bastion에서 DNS/NTP Forwarding",
+      "Master #1~3 (ETCD) / Worker #1~3 (Workloads), RHCOS 기반, BootStrap은 설치 시 임시"
+    ] },
+    { "dot": "rose", "title": "트러블슈팅 (부사수)", "items": [
+      "istio-cni \"Unauthorized\" · ContainerCreating → istio-cni-node 파드 재기동",
+      "Client IP 대역과 Pod CIDR 중복으로 응답 실패 → L4 장비에 SNAT 적용"
+    ] }
+  ]
+}

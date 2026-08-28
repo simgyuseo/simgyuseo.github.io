@@ -1,0 +1,246 @@
+{
+  "schema_version": 1,
+  "diagram_type": "architecture",
+  "meta": {
+    "title": "직업능력심사평가원 AS-IS (CentOS 7.9)",
+    "quality_profile": "standard",
+    "viewBox": [
+      1200,
+      720
+    ]
+  },
+  "components": [
+    {
+      "id": "user",
+      "type": "external",
+      "label": "USER",
+      "sublabel": "사용자 요청",
+      "pos": [
+        500,
+        24
+      ],
+      "size": [
+        170,
+        54
+      ]
+    },
+    {
+      "id": "l4",
+      "type": "cloud",
+      "label": "L4 SW",
+      "sublabel": "부하 분산",
+      "pos": [
+        485,
+        150
+      ],
+      "size": [
+        200,
+        56
+      ]
+    },
+    {
+      "id": "web1",
+      "type": "backend",
+      "label": "WEB01 · Apache 2.4.43",
+      "sublabel": "HTTPD / CentOS 7.9",
+      "pos": [
+        150,
+        276
+      ],
+      "size": [
+        270,
+        78
+      ]
+    },
+    {
+      "id": "web2",
+      "type": "backend",
+      "label": "WEB02 · Apache 2.4.43",
+      "sublabel": "HTTPD / CentOS 7.9",
+      "pos": [
+        740,
+        276
+      ],
+      "size": [
+        270,
+        78
+      ]
+    },
+    {
+      "id": "was1",
+      "type": "backend",
+      "label": "WAS01 · Tomcat 8.5.84",
+      "sublabel": "단일 인스턴스 · OpenJDK 1.8 / CentOS 7.9",
+      "pos": [
+        150,
+        428
+      ],
+      "size": [
+        270,
+        90
+      ]
+    },
+    {
+      "id": "was2",
+      "type": "backend",
+      "label": "WAS02 · Tomcat 8.5.84",
+      "sublabel": "단일 인스턴스 · OpenJDK 1.8 / CentOS 7.9",
+      "pos": [
+        740,
+        428
+      ],
+      "size": [
+        270,
+        90
+      ]
+    },
+    {
+      "id": "masterdb",
+      "type": "database",
+      "label": "Master DB",
+      "sublabel": "Oracle",
+      "pos": [
+        290,
+        592
+      ],
+      "size": [
+        200,
+        72
+      ]
+    },
+    {
+      "id": "slavedb",
+      "type": "database",
+      "label": "Slave DB",
+      "sublabel": "Oracle · 복제",
+      "pos": [
+        700,
+        592
+      ],
+      "size": [
+        200,
+        72
+      ]
+    }
+  ],
+  "boundaries": [
+    {
+      "kind": "region",
+      "label": "서비스 5종 (홈페이지 · 관리자 · 부정훈련관리 · 원격훈련심사 · 리포트)",
+      "wraps": [
+        "web1",
+        "web2",
+        "was1",
+        "was2"
+      ],
+      "pad": 22
+    }
+  ],
+  "connections": [
+    {
+      "id": "user-l4",
+      "from": "user",
+      "to": "l4",
+      "label": "HTTPS",
+      "variant": "emphasis",
+      "fromSide": "bottom",
+      "toSide": "top",
+      "labelDy": 26
+    },
+    {
+      "id": "l4-web1",
+      "from": "l4",
+      "to": "web1",
+      "label": "L4 분산",
+      "fromSide": "bottom",
+      "toSide": "top"
+    },
+    {
+      "id": "l4-web2",
+      "from": "l4",
+      "to": "web2",
+      "label": "L4 분산",
+      "fromSide": "bottom",
+      "toSide": "top"
+    },
+    {
+      "id": "web1-was1",
+      "from": "web1",
+      "to": "was1",
+      "label": "AJP (mod_jk)",
+      "fromSide": "bottom",
+      "toSide": "top",
+      "labelDy": 24
+    },
+    {
+      "id": "web2-was2",
+      "from": "web2",
+      "to": "was2",
+      "label": "AJP (mod_jk)",
+      "fromSide": "bottom",
+      "toSide": "top",
+      "labelDy": 24
+    },
+    {
+      "id": "web1-was2",
+      "from": "web1",
+      "to": "was2",
+      "label": "교차 분산",
+      "fromSide": "bottom",
+      "toSide": "top",
+      "labelDy": 60
+    },
+    {
+      "id": "web2-was1",
+      "from": "web2",
+      "to": "was1",
+      "fromSide": "bottom",
+      "toSide": "top"
+    },
+    {
+      "id": "was1-db",
+      "from": "was1",
+      "to": "masterdb",
+      "label": "JDBC",
+      "fromSide": "bottom",
+      "toSide": "top",
+      "labelDy": 20
+    },
+    {
+      "id": "was2-db",
+      "from": "was2",
+      "to": "masterdb",
+      "label": "JDBC",
+      "fromSide": "bottom",
+      "toSide": "right"
+    },
+    {
+      "id": "db-repl",
+      "from": "masterdb",
+      "to": "slavedb",
+      "label": "Master-Slave 복제",
+      "variant": "dashed",
+      "fromSide": "right",
+      "toSide": "left"
+    }
+  ],
+  "cards": [
+    {
+      "dot": "amber",
+      "title": "구성",
+      "items": [
+        "서비스별 WEB 2대 / WAS 2대 이중화, WAS는 단일 인스턴스",
+        "USER → L4 → Apache(WEB) → Tomcat(WAS) → Oracle DB"
+      ]
+    },
+    {
+      "dot": "cyan",
+      "title": "환경 · 특이사항",
+      "items": [
+        "CentOS 7.9 (EOL 대상) · Apache 2.4.43 · Tomcat 8.5.84 · OpenJDK 1.8",
+        "MasterDB(Oracle) ↔ SlaveDB Master-Slave 복제",
+        "리포트 서비스는 WEB/WAS를 하나의 VM에 함께 구성"
+      ]
+    }
+  ]
+}

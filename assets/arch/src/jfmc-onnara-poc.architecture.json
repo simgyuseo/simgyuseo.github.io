@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "diagram_type": "architecture",
+  "meta": {
+    "title": "온나라 시스템 WEB/WAS 구축 POC 아키텍처",
+    "quality_profile": "standard",
+    "viewBox": [1200, 812]
+  },
+  "components": [
+    { "id": "user", "type": "external", "label": "USER", "sublabel": "사용자 요청", "pos": [500, 24], "size": [200, 52] },
+    { "id": "l4", "type": "cloud", "label": "L4 SW", "sublabel": "부하 분산 (4-port)", "pos": [500, 122], "size": [200, 54] },
+    { "id": "web1", "type": "backend", "label": "WEB (VM1) · JBCS-httpd 24.2.4", "sublabel": "RHEL 8.8", "pos": [110, 244], "size": [330, 74] },
+    { "id": "web2", "type": "backend", "label": "WEB (VM2) · JBCS-httpd 24.2.4", "sublabel": "RHEL 8.8", "pos": [760, 244], "size": [330, 74] },
+    { "id": "onnara11", "type": "backend", "label": "onnara11", "sublabel": "JBoss-EAP 6.4.0", "pos": [70, 452], "size": [150, 60] },
+    { "id": "onnara12", "type": "backend", "label": "onnara12", "sublabel": "JBoss-EAP 6.4.0", "pos": [245, 452], "size": [150, 60] },
+    { "id": "batch11", "type": "backend", "label": "batch11", "sublabel": "배치 인스턴스", "pos": [420, 452], "size": [150, 60] },
+    { "id": "onnara21", "type": "backend", "label": "onnara21", "sublabel": "JBoss-EAP 6.4.0", "pos": [730, 452], "size": [150, 60] },
+    { "id": "onnara22", "type": "backend", "label": "onnara22", "sublabel": "JBoss-EAP 6.4.0", "pos": [905, 452], "size": [150, 60] },
+    { "id": "masterdb", "type": "database", "label": "Master DB", "sublabel": "Oracle", "pos": [330, 660], "size": [210, 72] },
+    { "id": "slavedb", "type": "database", "label": "Slave DB", "sublabel": "Oracle · 복제 대기", "pos": [770, 660], "size": [210, 72] }
+  ],
+  "boundaries": [
+    { "kind": "region", "label": "VM1", "wraps": ["web1", "onnara11", "onnara12", "batch11"], "pad": 22 },
+    { "kind": "region", "label": "VM2", "wraps": ["web2", "onnara21", "onnara22"], "pad": 22 }
+  ],
+  "connections": [
+    { "id": "user-l4", "from": "user", "to": "l4", "label": "HTTPS", "variant": "emphasis", "fromSide": "bottom", "toSide": "top", "labelDy": 24 },
+    { "id": "l4-web1", "from": "l4", "to": "web1", "label": "L4 분산", "fromSide": "bottom", "toSide": "top" },
+    { "id": "l4-web2", "from": "l4", "to": "web2", "label": "L4 분산", "fromSide": "bottom", "toSide": "top" },
+    { "id": "web1-onnara11", "from": "web1", "to": "onnara11", "label": "AJP (mod_jk)", "fromSide": "bottom", "toSide": "top", "labelDy": 30 },
+    { "id": "web1-onnara12", "from": "web1", "to": "onnara12", "fromSide": "bottom", "toSide": "top" },
+    { "id": "web2-onnara21", "from": "web2", "to": "onnara21", "label": "AJP (mod_jk)", "fromSide": "bottom", "toSide": "top", "labelDy": 30 },
+    { "id": "web2-onnara22", "from": "web2", "to": "onnara22", "fromSide": "bottom", "toSide": "top" },
+    { "id": "onnara11-db", "from": "onnara11", "to": "masterdb", "label": "JDBC", "fromSide": "bottom", "toSide": "top", "labelDy": 26 },
+    { "id": "onnara12-db", "from": "onnara12", "to": "masterdb", "fromSide": "bottom", "toSide": "top" },
+    { "id": "batch11-db", "from": "batch11", "to": "masterdb", "fromSide": "bottom", "toSide": "top" },
+    { "id": "onnara21-db", "from": "onnara21", "to": "masterdb", "fromSide": "bottom", "toSide": "right" },
+    { "id": "onnara22-db", "from": "onnara22", "to": "masterdb", "fromSide": "bottom", "toSide": "right" },
+    { "id": "db-repl", "from": "masterdb", "to": "slavedb", "label": "Master-Slave 복제", "variant": "dashed", "fromSide": "right", "toSide": "left" }
+  ],
+  "cards": [
+    { "dot": "amber", "title": "부하 분산 · 구성", "items": [
+      "USER → L4 SW(4-port) → VM1·VM2의 WEB(JBCS-httpd)로 분산",
+      "각 WEB의 mod_jk가 양쪽 VM WAS 인스턴스(onnara11·12·batch11 / onnara21·22)로 교차 분산",
+      "VM 2대 구성, VM당 JBCS-httpd 24.2.4 + JBoss-EAP 6.4.0 (RHEL 8.8)"
+    ] },
+    { "dot": "cyan", "title": "데이터베이스", "items": [
+      "모든 WAS 인스턴스는 JDBC로 Master DB(Oracle)에 연결",
+      "DB 접속 정보는 JBoss-EAP PicketBox 모듈로 암호화",
+      "Master-Slave 복제(Replication)로 Slave DB 동기화"
+    ] }
+  ]
+}

@@ -475,10 +475,9 @@ section.page-section h2 {
   border: 1px solid var(--color-border);
 }
 
-/* archify architecture diagram — rendered wide (~1650px) for label legibility.
-   Each diagram stacks full-width; on viewports >= 1440px the diagram breaks out
-   of the 960px text column (which is fixed at that size, so 50% == 460px) and
-   centres on the viewport, otherwise it simply fits the column. */
+/* archify architecture diagram — each diagram spans the full detail column
+   (across the label gutter) and stacks; the image scales to the column width
+   so it always stays inside the surrounding content card. */
 .project-detail dd:has(> .architecture-diagram) {
   grid-column: 1 / -1;
 }
@@ -496,19 +495,17 @@ section.page-section h2 {
   margin-bottom: 8px;
 }
 
+.architecture-diagram a {
+  display: block;
+  cursor: zoom-in;
+}
+
 .architecture-diagram img {
   display: block;
   width: 100%;
   height: auto;
   border: 1px solid var(--color-border);
   border-radius: 6px;
-}
-
-@media (min-width: 1440px) {
-  .project-detail dd:has(> .architecture-diagram) {
-    width: min(1600px, calc(100vw - 80px));
-    margin-left: calc(460px - min(800px, 50vw - 40px));
-  }
 }
 
 .project-more {

@@ -1,0 +1,397 @@
+{
+  "schema_version": 1,
+  "diagram_type": "architecture",
+  "meta": {
+    "title": "한국기술교육대학 학사시스템 TO-BE (Rocky Linux 8.9)",
+    "quality_profile": "standard",
+    "viewBox": [
+      1260,
+      690
+    ]
+  },
+  "components": [
+    {
+      "id": "user",
+      "type": "external",
+      "label": "USER",
+      "sublabel": "사용자 요청",
+      "pos": [
+        40,
+        70
+      ],
+      "size": [
+        180,
+        56
+      ]
+    },
+    {
+      "id": "apm",
+      "type": "backend",
+      "label": "APM",
+      "sublabel": "모니터링 / Rocky 8.9",
+      "pos": [
+        40,
+        220
+      ],
+      "size": [
+        180,
+        76
+      ]
+    },
+    {
+      "id": "l4",
+      "type": "cloud",
+      "label": "L4 SW",
+      "sublabel": "Load Balancing",
+      "pos": [
+        560,
+        30
+      ],
+      "size": [
+        200,
+        52
+      ]
+    },
+    {
+      "id": "web1",
+      "type": "backend",
+      "label": "WEB #1 · Apache 2.4.43",
+      "sublabel": "HTTPD / Rocky 8.9",
+      "pos": [
+        370,
+        140
+      ],
+      "size": [
+        180,
+        62
+      ]
+    },
+    {
+      "id": "web2",
+      "type": "backend",
+      "label": "WEB #2 · Apache 2.4.43",
+      "sublabel": "HTTPD / Rocky 8.9",
+      "pos": [
+        570,
+        140
+      ],
+      "size": [
+        180,
+        62
+      ]
+    },
+    {
+      "id": "web3",
+      "type": "backend",
+      "label": "WEB #3 · Apache 2.4.43",
+      "sublabel": "HTTPD / Rocky 8.9",
+      "pos": [
+        770,
+        140
+      ],
+      "size": [
+        180,
+        62
+      ]
+    },
+    {
+      "id": "web4",
+      "type": "backend",
+      "label": "WEB #4 · Apache 2.4.43",
+      "sublabel": "HTTPD / Rocky 8.9",
+      "pos": [
+        970,
+        140
+      ],
+      "size": [
+        180,
+        62
+      ]
+    },
+    {
+      "id": "was1",
+      "type": "backend",
+      "label": "WAS #1 · Tomcat 8.5.54",
+      "sublabel": "node11·node12 · OpenJDK 1.8",
+      "pos": [
+        370,
+        300
+      ],
+      "size": [
+        180,
+        66
+      ]
+    },
+    {
+      "id": "was2",
+      "type": "backend",
+      "label": "WAS #2 · Tomcat 8.5.54",
+      "sublabel": "node21·node22 · OpenJDK 1.8",
+      "pos": [
+        570,
+        300
+      ],
+      "size": [
+        180,
+        66
+      ]
+    },
+    {
+      "id": "was3",
+      "type": "backend",
+      "label": "WAS #3 · Tomcat 8.5.54",
+      "sublabel": "node31·node32 · OpenJDK 1.8",
+      "pos": [
+        770,
+        300
+      ],
+      "size": [
+        180,
+        66
+      ]
+    },
+    {
+      "id": "was4",
+      "type": "backend",
+      "label": "WAS #4 · Tomcat 8.5.54",
+      "sublabel": "node41·node42 · OpenJDK 1.8",
+      "pos": [
+        970,
+        300
+      ],
+      "size": [
+        180,
+        66
+      ]
+    },
+    {
+      "id": "was5",
+      "type": "backend",
+      "label": "WAS #5 · Tomcat 8.5.54",
+      "sublabel": "node51·node52 · OpenJDK 1.8",
+      "pos": [
+        370,
+        392
+      ],
+      "size": [
+        180,
+        66
+      ]
+    },
+    {
+      "id": "was6",
+      "type": "backend",
+      "label": "WAS #6 · Tomcat 8.5.54",
+      "sublabel": "node61·node62 · OpenJDK 1.8",
+      "pos": [
+        570,
+        392
+      ],
+      "size": [
+        180,
+        66
+      ]
+    },
+    {
+      "id": "was7",
+      "type": "backend",
+      "label": "WAS #7 · Tomcat 8.5.54",
+      "sublabel": "node71·node72 · OpenJDK 1.8",
+      "pos": [
+        770,
+        392
+      ],
+      "size": [
+        180,
+        66
+      ]
+    },
+    {
+      "id": "was8",
+      "type": "backend",
+      "label": "WAS #8 · Tomcat 8.5.54",
+      "sublabel": "node81·node82 · OpenJDK 1.8",
+      "pos": [
+        970,
+        392
+      ],
+      "size": [
+        180,
+        66
+      ]
+    },
+    {
+      "id": "cluster1",
+      "type": "backend",
+      "label": "CLUSTER #1 · Infinispan 7",
+      "sublabel": "ispn11·ispn12 · 세션 클러스터링",
+      "pos": [
+        470,
+        560
+      ],
+      "size": [
+        220,
+        74
+      ]
+    },
+    {
+      "id": "cluster2",
+      "type": "backend",
+      "label": "CLUSTER #2 · Infinispan 7",
+      "sublabel": "ispn21·ispn22 · 세션 클러스터링",
+      "pos": [
+        770,
+        560
+      ],
+      "size": [
+        220,
+        74
+      ]
+    }
+  ],
+  "boundaries": [
+    {
+      "kind": "security-group",
+      "label": "Load Balancing",
+      "wraps": [
+        "l4",
+        "web1",
+        "web2",
+        "web3",
+        "web4"
+      ],
+      "pad": 20
+    }
+  ],
+  "connections": [
+    {
+      "id": "user-l4",
+      "from": "user",
+      "to": "l4",
+      "label": "HTTP / HTTPS",
+      "variant": "emphasis",
+      "fromSide": "right",
+      "toSide": "left",
+      "labelDx": 60
+    },
+    {
+      "id": "user-apm",
+      "from": "user",
+      "to": "apm",
+      "label": "모니터링",
+      "variant": "dashed",
+      "fromSide": "bottom",
+      "toSide": "top",
+      "labelDy": 34
+    },
+    {
+      "id": "l4-web1",
+      "from": "l4",
+      "to": "web1",
+      "label": "L4 분산",
+      "fromSide": "bottom",
+      "toSide": "top",
+      "labelDy": 16
+    },
+    {
+      "id": "l4-web2",
+      "from": "l4",
+      "to": "web2",
+      "fromSide": "bottom",
+      "toSide": "top"
+    },
+    {
+      "id": "l4-web3",
+      "from": "l4",
+      "to": "web3",
+      "fromSide": "bottom",
+      "toSide": "top"
+    },
+    {
+      "id": "l4-web4",
+      "from": "l4",
+      "to": "web4",
+      "fromSide": "bottom",
+      "toSide": "top"
+    },
+    {
+      "id": "web1-was",
+      "from": "web1",
+      "to": "was1",
+      "label": "AJP (mod_jk) · WEB 4 ↔ WAS 8 전체 분산",
+      "fromSide": "bottom",
+      "toSide": "top",
+      "labelDy": 20
+    },
+    {
+      "id": "web2-was",
+      "from": "web2",
+      "to": "was2",
+      "fromSide": "bottom",
+      "toSide": "top"
+    },
+    {
+      "id": "web3-was",
+      "from": "web3",
+      "to": "was3",
+      "fromSide": "bottom",
+      "toSide": "top"
+    },
+    {
+      "id": "web4-was",
+      "from": "web4",
+      "to": "was4",
+      "fromSide": "bottom",
+      "toSide": "top"
+    },
+    {
+      "id": "was5-c1",
+      "from": "was5",
+      "to": "cluster1",
+      "label": "세션 복제 (Infinispan) · 전체 노드 ↔ CLUSTER #1·#2",
+      "fromSide": "bottom",
+      "toSide": "top",
+      "labelDy": 22
+    },
+    {
+      "id": "was6-c1",
+      "from": "was6",
+      "to": "cluster1",
+      "fromSide": "bottom",
+      "toSide": "top"
+    },
+    {
+      "id": "was7-c2",
+      "from": "was7",
+      "to": "cluster2",
+      "fromSide": "bottom",
+      "toSide": "top"
+    },
+    {
+      "id": "was8-c2",
+      "from": "was8",
+      "to": "cluster2",
+      "fromSide": "bottom",
+      "toSide": "top"
+    }
+  ],
+  "cards": [
+    {
+      "dot": "emerald",
+      "title": "이관 성과",
+      "items": [
+        "OS 이관: CentOS 7.9 → Rocky Linux 8.9, 보안 취약점 리스크 제거",
+        "WEB #1~4 (Apache) - WAS #1~8 (Tomcat, 서버당 node 2ea) 전체 mod_jk 분산",
+        "Infinispan 7 CLUSTER #1·#2 세션 클러스터링 정밀 튜닝으로 특정 서버 다운 시에도 무중단"
+      ]
+    },
+    {
+      "dot": "slate",
+      "title": "환경 · 설계 원칙",
+      "items": [
+        "Apache 2.4.43 · Tomcat 8.5.54 · Infinispan 7 · OpenJDK 1.8 · Rocky Linux 8.9",
+        "OS → JDK → WAS → 애플리케이션 간 종속성 · 교차 호환성 사전 검증"
+      ]
+    }
+  ]
+}
