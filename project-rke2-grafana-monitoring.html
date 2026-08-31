@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RKE2 k8s 클러스터 Grafana 모니터링 스택 구축 | 심규서 Portfolio</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="brand" href="index.html">심규서</a>
+    <button class="nav-toggle" aria-label="메뉴 열기">&#9776;</button>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="career.html">Career &amp; Skills</a></li>
+      <li><a href="projects.html" class="active">Projects</a></li>
+    </ul>
+  </div>
+</header>
+
+<main class="container">
+  <p class="breadcrumb"><a href="projects.html">Projects &amp; Troubleshooting Cases</a> &rarr; RKE2 k8s 클러스터 Grafana 모니터링 스택 구축</p>
+  <section class="page-section">
+    <h2>[RKE2 k8s 클러스터 Grafana 모니터링 스택 구축] &mdash; Prometheus 메트릭 + Loki + Alloy syslog 파이프라인과 DGX Spark(GB10) 서버 연동</h2>
+    <p class="meta">2026.07</p>
+    <div class="tag-list">
+      <span class="tag">Prometheus</span>
+      <span class="tag">Grafana</span>
+      <span class="tag">Loki</span>
+      <span class="tag">DGX Spark(GB10)</span>
+      <span class="tag">vLLM</span>
+      <span class="tag">Alloy</span>
+      <span class="tag">RKE2</span>
+    </div>
+
+    <article class="card project-card">
+      <dl class="project-detail">
+        <dt>프로젝트 아키텍처</dt>
+        <dd>
+          <ul class="detail-bullets">
+            <li>RKE2 v1.35.6+rke2r1 클러스터 <code>monitoring</code> 네임스페이스에 Prometheus &middot; Loki &middot; Alloy &middot; Grafana &middot; node-exporter DaemonSet 배포</li>
+            <li>DGX Spark(GB10) 서버 3대: node_exporter(:9101, GPU textfile collector 동시 노출) 메트릭 스크레이핑 + vLLM(:9100/:18300/:8100) 추론 메트릭 수집</li>
+            <li>DGX rsyslog omfwd(RFC5424 + octet-counted) &rarr; Alloy NodePort 30514 &rarr; Loki push 로그 파이프라인 구성</li>
+          </ul>
+          <figure class="architecture-diagram">
+            <figcaption>모니터링 스택 구성도</figcaption>
+            <a href="assets/arch/rke2-grafana-monitoring.png" target="_blank" rel="noopener" title="원본 크기로 보기">
+              <img src="assets/arch/rke2-grafana-monitoring.png" alt="RKE2 k8s 클러스터 Grafana 모니터링 스택 구성도 (Prometheus 메트릭 · Loki · Alloy syslog · DGX Spark 연동)" loading="lazy">
+            </a>
+          </figure>
+        </dd>
+        <dt>테스트 및 기술정리</dt>
+        <dd>
+          <ul class="detail-bullets">
+            <li>Prometheus v3.4.1 &middot; :9090 &middot; 30일 보관 &middot; PVC 50Gi(nfs-client)</li>
+            <li>Loki 3.4.3 &middot; :3100 &middot; filesystem TSDB v13 &middot; 720h 보관 &middot; PVC 100Gi</li>
+            <li>Alloy v1.9.1 &middot; syslog :514 &rarr; relabel(host/app/level/facility) &rarr; loki.write</li>
+            <li>Grafana v12.0.2 &middot; :3000 &middot; HAProxy Ingress(TLS) &middot; Prometheus+Loki 자동 프로비저닝</li>
+            <li>실행 노드 cop-worker-1/2 &middot; cop-worker-3/4 배제(NoSchedule taint 강화 + NodeAffinity 이중 차단)</li>
+          </ul>
+        </dd>
+      </dl>
+    </article>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <span>&copy; 2026 심규서. All rights reserved.</span>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>

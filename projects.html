@@ -25,6 +25,58 @@
     <p class="meta">진행한 프로젝트를 정리합니다. 각 프로젝트를 클릭하면 상세 내용을 확인할 수 있습니다.</p>
 
     <article class="card project-card">
+      <h3>[RKE2 k8s 클러스터 Grafana 모니터링 스택 구축] &mdash; Prometheus 메트릭 + Loki + Alloy syslog 파이프라인과 DGX Spark(GB10) 서버 연동</h3>
+      <p class="meta">2026.07</p>
+      <div class="tag-list">
+        <span class="tag">Prometheus</span>
+        <span class="tag">Grafana</span>
+        <span class="tag">Loki</span>
+        <span class="tag">DGX Spark(GB10)</span>
+        <span class="tag">vLLM</span>
+        <span class="tag">Alloy</span>
+        <span class="tag">RKE2</span>
+      </div>
+      <dl class="project-detail">
+        <dt>개요</dt>
+        <dd>
+          <ul class="detail-bullets">
+            <li>RKE2 v1.35.6+rke2r1 클러스터에 <code>monitoring</code> 네임스페이스를 신규 생성하고 Prometheus(메트릭) + Loki(로그) + Alloy(syslog 수집) + Grafana(시각화) 통합 모니터링 스택을 구축.</li>
+            <li>K8s 워커 노드뿐 아니라 클러스터 외부의 NVIDIA DGX Spark(GB10) 추론 서버 3대(대전 1대 / 서울 2대)를 하나의 대시보드에서 관측하도록 메트릭·로그 파이프라인을 연동.</li>
+          </ul>
+        </dd>
+        <dt>역할</dt>
+        <dd>
+          <ul class="detail-bullets">
+            <li>인프라 엔지니어(모니터링 스택 아키텍처 설계 및 K8s 매니페스트 작성·배포 전담)</li>
+            <li>Prometheus ConfigMap scrape_config 설계: K8s node-exporter DaemonSet(:9100) + DGX node_exporter(:9101) + DGX vLLM 메트릭(:9100/:18300/:8100)을 host 라벨 기준으로 통합 수집</li>
+            <li>DGX 서버 사전 구성: 포트 충돌(9100 vLLM 점유)로 node_exporter를 :9101로 분리, GB10 hwmon 콜렉터 비활성화 후 <code>nvidia-smi</code> 기반 GPU textfile collector 스크립트·systemd 서비스 작성(수집 시간 0.07초로 단축)</li>
+            <li>로그 파이프라인 구성: DGX rsyslog omfwd(RFC5424 + octet-counted) &rarr; Alloy NodePort 30514 &rarr; relabel(host/app/level/facility) &rarr; Loki push</li>
+            <li>Grafana 데이터소스·대시보드 자동 프로비저닝 및 HAProxy Ingress(TLS) 연동</li>
+          </ul>
+        </dd>
+        <dt>성과</dt>
+        <dd>
+          <ul class="detail-bullets">
+            <li>AS-IS: GPU 추론 서버의 자원 사용률·온도·스로틀 상태와 시스템 로그를 서버에 직접 접속해 확인해야 했고, 장애 원인 파악이 지연됨.</li>
+            <li>TO-BE: Prometheus 메트릭 + Loki 로그를 Grafana 단일 화면에서 상관 분석 가능한 환경을 구축하여 DGX Spark(GB10) GPU 온도·전력·클럭·냉각 스로틀과 vLLM 추론 지표를 실시간 관측.</li>
+            <li>cop-worker-3/4 노드에 NoSchedule taint 강화 + NodeAffinity 이중 차단을 적용해 모니터링 Pod가 격리 대상 노드에 절대 배치되지 않도록 보장.</li>
+            <li>Prometheus 30일 / Loki 720h 보관 정책과 총 170Gi PVC(nfs-client) 설계로 안정적인 장기 관측 기반 마련.</li>
+            <li>2026-08 DGX 전원 장애 복구 시 재부팅 후 systemd 타이머가 영구 정지하는 버그를 <code>OnCalendar</code> 재정의로 해결하여 수집 연속성 확보.</li>
+          </ul>
+        </dd>
+        <dt>개선점</dt>
+        <dd>
+          <ul class="detail-bullets">
+            <li>저는 처음에 node_exporter의 기본 콜렉터를 그대로 사용했으나, DGX Spark GB10에서 hwmon 콜렉터가 전체 수집 시간의 57%(142.8ms)를 소모한다는 것을 스크레이핑 지연을 추적하며 발견했습니다. 이 경험을 통해 모니터링 에이전트도 대상 하드웨어 특성에 맞게 콜렉터를 취사선택하고 필요한 <code>/sys</code> 경로만 직접 읽도록 튜닝해야 한다는 것을 체득했습니다.</li>
+            <li>DGX 로그가 Loki에 수신되지 않아, Alloy의 syslog 파서가 RFC5424 + octet-counted 조합을 요구하는데 rsyslog 기본값(RFC3164)으로 전송되고 있었음을 확인했습니다. 앞으로는 로그 파이프라인 구축 시 송신·수신 양단의 포맷 규격을 먼저 합의하고 검증해야겠다고 느꼈습니다.</li>
+            <li>현재는 대시보드 시각화 중심이므로, 다음 단계로 Alertmanager 연동을 통한 GPU 온도·스로틀·vLLM 오류율 임계치 알람과 Grafana 알림 채널을 구성하여 선제 대응 체계를 갖출 계획입니다.</li>
+          </ul>
+        </dd>
+      </dl>
+      <a class="project-more" href="project-rke2-grafana-monitoring.html">자세히 보기 &rarr;</a>
+    </article>
+
+    <article class="card project-card">
       <h3>[AI_Engineering] 고객 문의와 연관된 과거 사내 유사 사례 검색(VectorDB) 및 1차 대응 Flowise AI 에이전트</h3>
       <p class="meta">2026.03.01 ~ 현재</p>
       <div class="tag-list">
