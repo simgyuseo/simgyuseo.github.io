@@ -47,7 +47,7 @@
         <dt>역할</dt>
         <dd>
           <ul class="detail-bullets">
-            <li>인프라 엔지니어(모니터링 스택 아키텍처 설계 및 K8s 매니페스트 작성·배포 전담)</li>
+            <li>플랫폼 엔지니어(모니터링 스택 아키텍처 설계 및 k8s 매니페스트 작성·배포 전담)</li>
             <li>DGX 서버 사전 구성: 포트 충돌(9100 vLLM 점유)로 node_exporter를 :9101로 분리, GB10 hwmon 콜렉터 비활성화 후 <code>nvidia-smi</code> 기반 GPU textfile collector 스크립트·systemd 서비스 작성(수집 시간 0.07초로 단축)</li>
             <li>로그 파이프라인 구성: DGX rsyslog omfwd(RFC5424 + octet-counted) &rarr; Alloy NodePort 30514 &rarr; relabel(host/app/level/facility) &rarr; Loki push</li>
             <li>Grafana 데이터소스·대시보드 자동 프로비저닝 및 HAProxy Ingress(TLS) 연동</li>
@@ -64,7 +64,6 @@
         <dt>개선점</dt>
         <dd>
           <ul class="detail-bullets">
-            <li>저는 처음에 node_exporter의 기본 콜렉터를 그대로 사용했으나, DGX Spark GB10에서 hwmon 콜렉터가 전체 수집 시간의 57%(142.8ms)를 소모한다는 것을 스크레이핑 지연을 추적하며 발견했습니다. 이 경험을 통해 모니터링 에이전트도 대상 하드웨어 특성에 맞게 콜렉터를 취사선택하고 필요한 <code>/sys</code> 경로만 직접 읽도록 튜닝해야 한다는 것을 체득했습니다.</li>
             <li>DGX 로그가 Loki에 수신되지 않아, Alloy의 syslog 파서가 RFC5424 + octet-counted 조합을 요구하는데 rsyslog 기본값(RFC3164)으로 전송되고 있었음을 확인했습니다. 앞으로는 로그 파이프라인 구축 시 송신·수신 양단의 포맷 규격을 먼저 합의하고 검증해야겠다고 느꼈습니다.</li>
           </ul>
         </dd>
