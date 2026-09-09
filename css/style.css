@@ -340,6 +340,26 @@ section.page-section h2 {
   color: var(--color-accent);
 }
 
+.toggle-hint {
+  flex-shrink: 0;
+  margin-left: auto;
+  font-size: 0.78rem;
+  color: var(--color-text-muted);
+  white-space: nowrap;
+}
+
+.toggle-hint::before {
+  content: "클릭";
+}
+
+.toggle-btn[aria-expanded="true"] .toggle-hint::before {
+  content: "닫기";
+}
+
+.toggle-hint + .toggle-icon {
+  margin-left: 8px;
+}
+
 .toggle-icon {
   flex-shrink: 0;
   width: 20px;
@@ -480,6 +500,15 @@ section.page-section h2 {
    so it always stays inside the surrounding content card. */
 .project-detail dd:has(> .architecture-diagram) {
   grid-column: 1 / -1;
+}
+
+/* the architecture label carries a long parenthetical (Archify skill URL);
+   let it span the full detail width so it reads horizontally on one line
+   instead of wrapping inside the narrow 120px label gutter. */
+.project-detail dt:has(+ dd > .architecture-diagram) {
+  grid-column: 1 / -1;
+  padding-top: 0;
+  overflow-wrap: anywhere;
 }
 
 .architecture-diagram {
