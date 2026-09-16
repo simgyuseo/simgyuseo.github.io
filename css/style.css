@@ -335,6 +335,10 @@ section.page-section h2 {
   cursor: pointer;
 }
 
+.info-list dd > .toggle-list > .toggle-item:first-child > .toggle-btn {
+  padding-top: 0;
+}
+
 .toggle-btn:hover,
 .toggle-btn:focus-visible {
   color: var(--color-accent);
