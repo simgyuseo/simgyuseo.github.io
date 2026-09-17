@@ -286,7 +286,7 @@ section.page-section h2 {
 .info-list {
   display: grid;
   grid-template-columns: 120px 1fr;
-  gap: 10px 16px;
+  gap: 22px 16px;
   margin: 0;
 }
 
@@ -301,7 +301,7 @@ section.page-section h2 {
 }
 
 .info-list dd.info-list-gap-after {
-  margin-bottom: 16px;
+  margin-bottom: 8px;
 }
 
 /* Toggle list (certificates, awards — click to view proof image) */
