@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>k8s 클러스터 기반 Engineer Team 공용 Hermes Agent 플랫폼 구축 및 Slack 연동 | 심규서 Portfolio</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="brand" href="index.html">심규서</a>
+    <button class="nav-toggle" aria-label="메뉴 열기">&#9776;</button>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="career.html">Career &amp; Skills</a></li>
+      <li><a href="projects.html" class="active">Projects</a></li>
+    </ul>
+  </div>
+</header>
+
+<main class="container">
+  <p class="breadcrumb"><a href="projects.html">Projects &amp; Troubleshooting Cases</a> &rarr; k8s 클러스터 기반 Engineer Team 공용 Hermes Agent 플랫폼 구축 및 Slack 연동</p>
+  <section class="page-section">
+    <h2>[AI-Engineer] k8s 클러스터 기반 Engineer Team 공용 Hermes Agent 플랫폼 구축 및 Slack 연동</h2>
+    <p class="meta">2026.08</p>
+    <div class="tag-list">
+      <span class="tag">Hermes-Agent</span>
+      <span class="tag">HelmChart</span>
+      <span class="tag">Configmap</span>
+      <span class="tag">Secret</span>
+      <span class="tag">Statefulset</span>
+      <span class="tag">Local LLM</span>
+      <span class="tag">gpt-4.1</span>
+      <span class="tag">gpt-oss-20b</span>
+      <span class="tag">QWen3.8-Flash-Next</span>
+      <span class="tag">Slack</span>
+    </div>
+
+    <article class="card project-card">
+      <dl class="project-detail">
+        <dt>개요</dt>
+        <dd>
+          <ul class="detail-bullets">
+            <li>Engineer Team에서는 기존에 엔지니어별로 Claude, ChatGPT와 같은 생성형 AI 도구를 개별적으로 사용하고 있었습니다. 개인 단위에서는 업무 생산성을 높일 수 있었지만 엔지니어마다 사용하는 AI 환경과 프롬프트가 달랐고 각자가 만든 업무 자동화 Skill 또한 개인 환경에 분산되어 팀 차원의 자산으로 축적되기 어려운 구조적인 문제가 있었습니다.</li>
+            <li>또한 사내 GPU 서버에 구축된 LLM 모델을 특정 사용자나 개별 인터페이스에 한정하지 않고 Engineer Team 전체가 공용으로 활용할 수 있는 통합 AI Agent 환경이 필요했습니다. 이를 해결하기 위해 사내 Kubernetes 클러스터에 Engineer Team 공용 Hermes Agent를 구축하고 Slack Bot과 연동했습니다.</li>
+            <li>Hermes Agent를 팀 공용 AI Agent 플랫폼으로 구성하여 사내 LLM과 외부 AI 모델을 하나의 Agent 인터페이스에서 활용하고 반복되는 엔지니어링 업무를 Skill로 표준화하여 팀원 누구나 재사용할 수 있도록 하는 것을 프로젝트의 핵심 목표로 설정했습니다. Slack을 사용자 인터페이스로 연결함으로써 별도의 AI 도구나 접속 환경을 열지 않아도 24시간 내내 기존 협업 환경에서 언제든 Agent를 호출할 수 있도록 구성했습니다.</li>
+          </ul>
+        </dd>
+        <dt>역할</dt>
+        <dd>
+          <ul class="detail-bullets">
+            <li>플랫폼 엔지니어 및 AI-Engineer(사내 k8s 클러스터에 Hermes Agent StatefulSet 배포 및 Hermes Agent Local LLM 모델 연동)</li>
+            <li>Slack Bot과 연동하여 24시간 내내 언제 어디서든 Engineer 팀 공용으로 Hermes Agent에 등록된 Skill, Cron 등을 공용 자산으로 축적할 수 있게 함</li>
+          </ul>
+        </dd>
+        <dt>성과</dt>
+        <dd>
+          <ul class="detail-bullets">
+            <li>AS-IS: AI 도구의 개인화·파편화 &mdash; 엔지니어마다 Claude, ChatGPT 등을 개별적으로 사용하여 프롬프트, 활용 방법, 업무 노하우가 개인 단위에 머무르는 문제가 있었습니다.</li>
+            <li>AS-IS: Skill·Cron 자산의 분산 &mdash; 각 엔지니어가 만든 자동화 Skill, Cron과 Prompt가 개인 PC 또는 개별 환경에 존재하여 팀원이 쉽게 공유·재사용하기 어려웠습니다.</li>
+            <li>AS-IS: 업무 방식의 비표준화 &mdash; 동일한 반복 업무도 엔지니어마다 다른 방식으로 AI를 활용하면서 결과 품질과 업무 절차를 표준화하기 어려웠습니다.</li>
+            <li>AS-IS: 지속적인 Agent 실행 환경 부족 &mdash; 개인 PC 기반 AI 도구는 사용자의 PC 상태와 실행 여부, 기억 메모리·토큰에 영향을 받기 때문에 팀 공용 서비스 형태로 상시 제공하기 어려웠습니다.</li>
+            <li>TO-BE: 개인별로 파편화되어 있던 AI 활용 환경과 Skill·Cron을 Engineer Team 공용 Hermes Agent로 통합하고 Slack을 통해 언제든 접근 가능한 상시 운영형 AI 엔지니어링 비서 환경을 구축하여 업무 효율성을 높였습니다.</li>
+            <li>TO-BE: 24시간 사용 가능한 Engineer Team 공용 AI 비서 구축 &mdash; 사내 k8s 클러스터에서 Hermes Agent를 상시 운영하여 개인 PC 실행 여부와 관계없이 팀원들이 필요할 때 언제든 AI Agent를 사용할 수 있는 환경을 구성했습니다.</li>
+            <li>TO-BE: Slack 기반 접근성 향상 &mdash; 별도의 AI 서비스 화면에 접속하지 않고 팀에서 사용 중인 Slack을 통해 Hermes Agent를 호출하여 업무 흐름을 끊지 않고 AI를 활용할 수 있도록 했습니다.</li>
+            <li>TO-BE: AI Skill의 팀 자산화 &mdash; 개인별로 분산되던 Prompt와 업무 자동화 로직을 Hermes Skill로 관리할 수 있는 기반을 마련하여 팀 공용으로 재사용할 수 있도록 했습니다.</li>
+            <li>TO-BE: 사내 LLM의 활용 범위 확대 &mdash; GPU 서버에 배포된 LLM 모델을 Hermes Agent의 모델 Provider와 연결하여 특정 사용자에 한정되지 않고 Engineer Team이 공통으로 활용할 수 있는 인터페이스를 구축했습니다.</li>
+          </ul>
+        </dd>
+        <dt>개선점</dt>
+        <dd>
+          <ul class="detail-bullets">
+            <li>Hermes Agent는 사용하면 할수록 사용 과정에서 조직의 업무 절차와 지식을 지속적으로 축적하여 점차 업무 수행 범위와 자동화 수준을 확장할 수 있는 AI Agent이기에 적극적으로 많이 사용해야겠다고 느꼈습니다.</li>
+          </ul>
+        </dd>
+      </dl>
+    </article>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <span>&copy; 2026 심규서. All rights reserved.</span>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>
