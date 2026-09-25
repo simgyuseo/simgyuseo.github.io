@@ -44,6 +44,7 @@
           <ul class="detail-bullets">
             <li>Engineer Team에서 엔지니어별로 Claude ChatGPT 등 생성형 AI 도구를 개별 사용하던 환경으로 개인 단위 생산성은 확보되나 AI 환경·프롬프트가 엔지니어마다 상이하고 업무 자동화 Skill도 개인 환경에 분산되어 팀 자산으로 축적되기 어려운 구조적 문제 존재.</li>
             <li>사내 GPU 서버에 구축된 LLM 모델을 특정 사용자·인터페이스에 한정하지 않고 Engineer Team 전체가 공용 활용할 수 있는 통합 AI Agent 환경 필요에 따라 사내 Kubernetes 클러스터에 팀 공용 Hermes Agent 구축 및 Slack Bot 연동.</li>
+            <li>Hermes Agent를 선택한 핵심 이유는 하나의 Agent 환경에서 LLM 연결·Skill 실행·대화 세션 관리·외부 메신저 연동 등을 통합할 수 있다는 점. 특히 업무에 필요한 반복 절차를 Skill 형태로 구현해 공용 배포함으로써 개인의 AI 활용 노하우를 팀의 재사용 가능한 기술 자산으로 전환할 수 있다고 판단.</li>
             <li>사내 LLM과 외부 AI 모델을 하나의 Agent 인터페이스에서 활용하고 반복 엔지니어링 업무를 Skill로 표준화해 팀원 누구나 재사용 가능하도록 하는 것을 핵심 목표로 설정 Slack 연결을 통해 별도 접속 환경 없이 24시간 기존 협업 환경에서 Agent 호출이 가능하도록 구성.</li>
           </ul>
         </dd>
