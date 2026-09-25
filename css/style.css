@@ -501,10 +501,6 @@ section.page-section h2 {
   border-left-color: #16a34a;
 }
 
-.perf-item.perf-note {
-  border-left-color: var(--color-accent);
-}
-
 .perf-badge {
   display: inline-block;
   font-size: 0.72rem;
