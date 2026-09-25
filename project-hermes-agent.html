@@ -56,16 +56,16 @@
         </dd>
         <dt>성과</dt>
         <dd>
-          <ul class="detail-bullets">
-            <li>AS-IS: AI 도구의 개인화·파편화 &mdash; 엔지니어마다 Claude ChatGPT 등을 개별적으로 사용하여 프롬프트 활용 방법 업무 노하우가 개인 단위에 머무르는 문제.</li>
-            <li>AS-IS: Skill·Cron 자산의 분산 &mdash; 각 엔지니어가 만든 자동화 Skill Cron과 Prompt가 개인 PC 또는 개별 환경에 존재하여 팀원 간 공유·재사용이 어려운 구조.</li>
-            <li>AS-IS: 업무 방식의 비표준화 &mdash; 동일한 반복 업무도 엔지니어마다 다른 방식으로 AI를 활용하여 결과 품질과 업무 절차 표준화가 어려운 구조.</li>
-            <li>AS-IS: 지속적인 Agent 실행 환경 부족 &mdash; 개인 PC 기반 AI 도구는 사용자의 PC 상태와 실행 여부 기억 메모리·토큰에 영향을 받아 팀 공용 서비스 형태로 상시 제공이 어려운 구조.</li>
-            <li>TO-BE: 개인별로 파편화되어 있던 AI 활용 환경과 Skill·Cron을 Engineer Team 공용 Hermes Agent로 통합하고 Slack을 통해 언제든 접근 가능한 상시 운영형 AI 엔지니어링 비서 환경 구축으로 업무 효율성 제고.</li>
-            <li>TO-BE: 24시간 사용 가능한 Engineer Team 공용 AI 비서 구축 &mdash; 사내 k8s 클러스터에서 Hermes Agent를 상시 운영하여 개인 PC 실행 여부와 관계없이 팀원들이 필요할 때 언제든 AI Agent를 사용할 수 있는 환경 구성.</li>
-            <li>TO-BE: Slack 기반 접근성 향상 &mdash; 별도의 AI 서비스 화면에 접속하지 않고 팀에서 사용 중인 Slack을 통해 Hermes Agent를 호출하여 업무 흐름을 끊지 않고 AI를 활용할 수 있는 환경 마련.</li>
-            <li>TO-BE: AI Skill의 팀 자산화 &mdash; 개인별로 분산되던 Prompt와 업무 자동화 로직을 Hermes Skill로 관리할 수 있는 기반 마련으로 팀 공용 재사용 가능.</li>
-            <li>TO-BE: 사내 LLM의 활용 범위 확대 &mdash; GPU 서버에 배포된 LLM 모델을 Hermes Agent의 모델 Provider와 연결하여 특정 사용자에 한정되지 않는 Engineer Team 공통 활용 인터페이스 구축.</li>
+          <ul class="perf-list">
+            <li class="perf-item perf-asis"><span class="perf-badge perf-badge-asis">AS-IS</span>AI 도구의 개인화·파편화 &mdash; 엔지니어마다 Claude ChatGPT 등을 개별적으로 사용하여 프롬프트 활용 방법 업무 노하우가 개인 단위에 머무르는 문제.</li>
+            <li class="perf-item perf-asis"><span class="perf-badge perf-badge-asis">AS-IS</span>Skill·Cron 자산의 분산 &mdash; 각 엔지니어가 만든 자동화 Skill Cron과 Prompt가 개인 PC 또는 개별 환경에 존재하여 팀원 간 공유·재사용이 어려운 구조.</li>
+            <li class="perf-item perf-asis"><span class="perf-badge perf-badge-asis">AS-IS</span>업무 방식의 비표준화 &mdash; 동일한 반복 업무도 엔지니어마다 다른 방식으로 AI를 활용하여 결과 품질과 업무 절차 표준화가 어려운 구조.</li>
+            <li class="perf-item perf-asis"><span class="perf-badge perf-badge-asis">AS-IS</span>지속적인 Agent 실행 환경 부족 &mdash; 개인 PC 기반 AI 도구는 사용자의 PC 상태와 실행 여부 기억 메모리·토큰에 영향을 받아 팀 공용 서비스 형태로 상시 제공이 어려운 구조.</li>
+            <li class="perf-item perf-tobe"><span class="perf-badge perf-badge-tobe">TO-BE</span>개인별로 파편화되어 있던 AI 활용 환경과 Skill·Cron을 Engineer Team 공용 Hermes Agent로 통합하고 Slack을 통해 언제든 접근 가능한 상시 운영형 AI 엔지니어링 비서 환경 구축으로 업무 효율성 제고.</li>
+            <li class="perf-item perf-tobe"><span class="perf-badge perf-badge-tobe">TO-BE</span>24시간 사용 가능한 Engineer Team 공용 AI 비서 구축 &mdash; 사내 k8s 클러스터에서 Hermes Agent를 상시 운영하여 개인 PC 실행 여부와 관계없이 팀원들이 필요할 때 언제든 AI Agent를 사용할 수 있는 환경 구성.</li>
+            <li class="perf-item perf-tobe"><span class="perf-badge perf-badge-tobe">TO-BE</span>Slack 기반 접근성 향상 &mdash; 별도의 AI 서비스 화면에 접속하지 않고 팀에서 사용 중인 Slack을 통해 Hermes Agent를 호출하여 업무 흐름을 끊지 않고 AI를 활용할 수 있는 환경 마련.</li>
+            <li class="perf-item perf-tobe"><span class="perf-badge perf-badge-tobe">TO-BE</span>AI Skill의 팀 자산화 &mdash; 개인별로 분산되던 Prompt와 업무 자동화 로직을 Hermes Skill로 관리할 수 있는 기반 마련으로 팀 공용 재사용 가능.</li>
+            <li class="perf-item perf-tobe"><span class="perf-badge perf-badge-tobe">TO-BE</span>사내 LLM의 활용 범위 확대 &mdash; GPU 서버에 배포된 LLM 모델을 Hermes Agent의 모델 Provider와 연결하여 특정 사용자에 한정되지 않는 Engineer Team 공통 활용 인터페이스 구축.</li>
           </ul>
         </dd>
         <dt>개선점</dt>
