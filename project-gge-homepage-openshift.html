@@ -43,7 +43,7 @@
             <li>운영 내부망 CLUSTER에 Jenkins CI 도구 설치</li>
             <li>이슈 대응 및 트러블슈팅 지원(부사수역할): 특정 파드 "v2-6-istio-cni": Unauthorized 에러 로그 발생 및 ContainerCreating 상태 유지 문제 트러블슈팅
               <ul class="detail-bullets">
-                <li>해결 : 공식적으로는 OSSM 2.4 이상에서 해결된 사안이나 kubeconfig 파일의 인증 정보 갱신 실패 등 불안정 요소로 인해 OpenShift 4.16 클러스터 버전에서 발생할 수 있는 요소로 확인됨 istio-cni-node 파드 재기동으로 해결</li>
+                <li>해결 : 공식적으로는 OSSM 2.4 이상에서 해결된 사안이나 kubeconfig 파일의 인증 정보 갱신 실패 등 불안정 요소로 인해 OpenShift 4.16 클러스터 버전에서 발생할 수 있는 요소로 확인되었고 kubeconfig 인증 정보 갱신 후 istio-cni-node 파드 rollout으로 해결</li>
               </ul>
             </li>
             <li>이슈 대응 및 트러블슈팅 지원(부사수역할): 특정 지역 교육청에서 L4 장비로 외부 접속자인 Client IP 대역과 OpenShift Cluster 내부 Pod CIDR IP 대역이 똑같아 서버가 외부로 응답을 못하고 클러스터 내부에서만 길을 잃고 무한루프가 발생한 상황
