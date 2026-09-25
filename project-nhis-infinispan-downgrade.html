@@ -32,6 +32,31 @@
 
     <article class="card project-card">
       <dl class="project-detail">
+        <dt>개요</dt>
+        <dd>
+          <ul class="detail-bullets">
+            <li>외부 세션 저장소 런타임 자바 버전 호환성 문제로 인한 infinispan7 -&gt; infinispan13 업그레이드 작업</li>
+          </ul>
+        </dd>
+        <dt>역할</dt>
+        <dd>
+          <ul class="detail-bullets">
+            <li>인프라 엔지니어(런타임 jdk11 환경과 맞는 외부 세션 저장소 infinispan 서버 재구축 작업)</li>
+          </ul>
+        </dd>
+        <dt>성과</dt>
+        <dd>
+          <ul class="detail-bullets">
+            <li>runtime jdk 버전과 업그레이드와 함께 환경에 맞는 세션 소프트웨어 버전 설치, 사용자의 세션 유실 없는 안정적인 서비스 환경 구축</li>
+          </ul>
+        </dd>
+        <dt>개선점</dt>
+        <dd>
+          <ul class="detail-bullets">
+            <li>WAS 단 세션 클러스터링을 구성해도 배포 애플리케이션(web.xml)에 &lt;distributable/&gt; 설정이 누락되면 정상 동작하지 않음을 트러블슈팅 과정에서 확인.</li>
+            <li>이후 시스템 구축 시 인프라 관점에 한정하지 않고 애플리케이션 구조·요구사항까지 함께 검증하는 시야 확보 필요성 인식.</li>
+          </ul>
+        </dd>
         <dt>프로젝트 아키텍처(Archify 스킬: <a href="https://github.com/tt-a1i/archify" target="_blank" rel="noopener">https://github.com/tt-a1i/archify</a>)</dt>
         <dd>
           <figure class="architecture-diagram">

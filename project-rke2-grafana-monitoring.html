@@ -36,6 +36,37 @@
 
     <article class="card project-card">
       <dl class="project-detail">
+        <dt>개요</dt>
+        <dd>
+          <ul class="detail-bullets">
+            <li>RKE2 v1.35.6+rke2r1 클러스터에 <code>monitoring</code> 네임스페이스를 신규 생성하고 Prometheus(메트릭) + Loki(로그) + Alloy(syslog 수집) + Grafana(시각화) 통합 모니터링 스택을 구축.</li>
+            <li>사내 Local LLM이 설치된 NVIDIA DGX Spark(GB10) 추론 서버 3대(대전 1대 / 서울 2대)를 하나의 대시보드에서 관측하도록 프로메테우스 메트릭·로그 파이프라인을 연동.</li>
+          </ul>
+        </dd>
+        <dt>역할</dt>
+        <dd>
+          <ul class="detail-bullets">
+            <li>플랫폼 엔지니어(모니터링 스택 아키텍처 설계 및 k8s 매니페스트 작성·배포 전담)</li>
+            <li>DGX 서버 사전 구성: 포트 충돌(9100 vLLM 점유)로 node_exporter를 :9101로 분리, GB10 hwmon 콜렉터 비활성화 후 <code>nvidia-smi</code> 기반 GPU textfile collector 스크립트·systemd 서비스 작성(수집 시간 0.07초로 단축)</li>
+            <li>로그 파이프라인 구성: DGX rsyslog omfwd(RFC5424 + octet-counted) &rarr; Alloy NodePort 30514 &rarr; relabel(host/app/level/facility) &rarr; Loki push</li>
+            <li>Grafana 데이터소스·대시보드 자동 프로비저닝 및 HAProxy Ingress(TLS) 연동</li>
+          </ul>
+        </dd>
+        <dt>성과</dt>
+        <dd>
+          <ul class="detail-bullets">
+            <li>AS-IS: GPU 추론 서버의 자원 사용률·온도·스로틀 상태와 시스템 로그를 서버에 직접 접속해 확인해야 했고, 3개의 DGX 서버의 모니터링이 필요로 함.</li>
+            <li>TO-BE: Prometheus 메트릭 + Loki 로그를 Grafana 단일 화면에서 상관 분석 가능한 환경을 구축하여 DGX Spark(GB10) GPU 온도·전력·클럭·냉각 스로틀과 vLLM 추론 지표를 실시간 관측.</li>
+            <li>Prometheus 30일 / Loki 720h 보관 정책과 총 170Gi PVC 설계로 안정적인 장기 관측 기반 마련.</li>
+          </ul>
+        </dd>
+        <dt>개선점</dt>
+        <dd>
+          <ul class="detail-bullets">
+            <li>DGX 로그 미수신 원인은 Alloy syslog 파서가 요구하는 RFC5424+octet-counted 규격과 rsyslog 기본값(RFC3164)의 불일치로 확인.</li>
+            <li>로그 파이프라인 구축 시 송신·수신 양단의 포맷 규격 사전 합의 및 검증 필요성 확인.</li>
+          </ul>
+        </dd>
         <dt>프로젝트 아키텍처(Archify 스킬: <a href="https://github.com/tt-a1i/archify" target="_blank" rel="noopener">https://github.com/tt-a1i/archify</a>)</dt>
         <dd>
           <figure class="architecture-diagram">
