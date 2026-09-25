@@ -43,14 +43,14 @@
         <dt>개요</dt>
         <dd>
           <ul class="detail-bullets">
-            <li>Engineer Team에서 엔지니어별로 Claude, ChatGPT 등 생성형 AI 도구를 개별 사용하던 환경으로, AI 활용 방식과 자동화 Skill이 개인 단위에 머물러 팀 자산으로 축적되기 어려운 구조적 문제.</li>
+            <li>Engineer Team에서 엔지니어별로 Claude ChatGPT 등 생성형 AI 도구를 개별 사용하던 환경으로 AI 활용 방식과 자동화 Skill이 개인 단위에 머물러 팀 자산으로 축적되기 어려운 구조적 문제.</li>
             <li>사내 GPU 서버 LLM을 팀 전체가 공용 활용할 수 있는 통합 AI Agent 환경 필요에 따라 k8s 클러스터에 Engineer Team 공용 Hermes Agent 구축 및 Slack Bot 연동.</li>
           </ul>
         </dd>
         <dt>핵심 성과</dt>
         <dd>
           <ul class="detail-bullets">
-            <li>k8s 클러스터 상시 운영으로 개인 PC 실행 여부와 무관한 24시간 접근 가능 환경 구축, Slack 연동으로 업무 흐름 단절 없는 Agent 호출 체계 마련.</li>
+            <li>k8s 클러스터 상시 운영으로 개인 PC 실행 여부와 무관한 24시간 접근 가능 환경 구축 Slack 연동으로 업무 흐름 단절 없는 Agent 호출 체계 마련.</li>
           </ul>
         </dd>
       </dl>
@@ -73,14 +73,14 @@
         <dt>개요</dt>
         <dd>
           <ul class="detail-bullets">
-            <li>RKE2 클러스터에 <code>monitoring</code> 네임스페이스 신설, Prometheus+Loki+Alloy+Grafana 통합 모니터링 스택 구축.</li>
+            <li>RKE2 클러스터에 <code>monitoring</code> 네임스페이스 신설 Prometheus+Loki+Alloy+Grafana 통합 모니터링 스택 구축.</li>
             <li>사내 Local LLM 추론 서버 DGX Spark(GB10) 3대(대전 1·서울 2)를 하나의 대시보드에서 관측하도록 메트릭·로그 파이프라인 연동.</li>
           </ul>
         </dd>
         <dt>핵심 성과</dt>
         <dd>
           <ul class="detail-bullets">
-            <li>GPU 온도·전력·클럭·냉각 스로틀과 vLLM 추론 지표를 Grafana 단일 화면에서 실시간 관측 가능한 환경 구축, Prometheus 30일/Loki 720h 보관 정책과 170Gi PVC로 장기 관측 기반 마련.</li>
+            <li>GPU 온도·전력·클럭·냉각 스로틀과 vLLM 추론 지표를 Grafana 단일 화면에서 실시간 관측 가능한 환경 구축 Prometheus 30일/Loki 720h 보관 정책과 170Gi PVC로 장기 관측 기반 마련.</li>
           </ul>
         </dd>
       </dl>
@@ -92,7 +92,7 @@
       <p class="meta">2026.03.01 ~ 현재</p>
       <div class="tag-list">
         <span class="tag">LangChain</span>
-        <span class="tag">Local AI(openai/gpt-oss-20b,azure openai,gemma-4-26B-A4B-it-Q4_K_M)</span>
+        <span class="tag">Local AI(openai/gpt-oss-20b azure openai gemma-4-26B-A4B-it-Q4_K_M)</span>
         <span class="tag">VectorDB(Qdrant)</span>
         <span class="tag">임베딩모델(dragonkue/BGE-m3-ko)</span>
         <span class="tag">Flowise</span>
@@ -108,7 +108,7 @@
         <dt>핵심 성과</dt>
         <dd>
           <ul class="detail-bullets">
-            <li>분산된 과거 장애·문의 이력의 수동 검색 구조를 AI 통합 검색으로 대체하여 정보 탐색 시간 단축, 음성/이메일/문자/이미지 4채널 통합 처리 파이프라인 확립.</li>
+            <li>분산된 과거 장애·문의 이력의 수동 검색 구조를 AI 통합 검색으로 대체하여 정보 탐색 시간 단축 음성/이메일/문자/이미지 4채널 통합 처리 파이프라인 확립.</li>
           </ul>
         </dd>
       </dl>
@@ -153,8 +153,8 @@
         <dt>개요</dt>
         <dd>
           <ul class="detail-bullets">
-            <li>국군재정관리단 온나라 시스템 본 사업 착수 전, WEB(JBCS-httpd24)·WAS(JBOSS-EAP6.4) 아키텍처의 안정성과 정합성을 검증하는 POC 수행.</li>
-            <li>VM 2대에 JBCS/JBOSS-EAP 설치·구성, 실제 운영 이전 인프라 리스크 최소화.</li>
+            <li>국군재정관리단 온나라 시스템 본 사업 착수 전 WEB(JBCS-httpd24)·WAS(JBOSS-EAP6.4) 아키텍처의 안정성과 정합성을 검증하는 POC 수행.</li>
+            <li>VM 2대에 JBCS/JBOSS-EAP 설치·구성 실제 운영 이전 인프라 리스크 최소화.</li>
           </ul>
         </dd>
         <dt>핵심 성과</dt>
@@ -177,14 +177,14 @@
         <dt>개요</dt>
         <dd>
           <ul class="detail-bullets">
-            <li>경기도교육청 홈페이지 재구축 사업의 신규 인프라 OpenShift Cluster 운영·안정화에 부사수로 참여, 기술지원 수행.</li>
-            <li>Helm 배포 리소스 제한 설정, Jenkins CI 도구 설치 등 클러스터 운영 지원.</li>
+            <li>경기도교육청 홈페이지 재구축 사업의 신규 인프라 OpenShift Cluster 운영·안정화에 부사수로 참여 기술지원 수행.</li>
+            <li>Helm 배포 리소스 제한 설정 Jenkins CI 도구 설치 등 클러스터 운영 지원.</li>
           </ul>
         </dd>
         <dt>핵심 성과</dt>
         <dd>
           <ul class="detail-bullets">
-            <li>istio-cni 파드 Unauthorized 오류, L4 장비-Pod CIDR 대역 충돌 등 운영 이슈 트러블슈팅으로 Private OpenShift Cluster 안정 운영에 기여.</li>
+            <li>istio-cni 파드 Unauthorized 오류 L4 장비-Pod CIDR 대역 충돌 등 운영 이슈 트러블슈팅으로 Private OpenShift Cluster 안정 운영에 기여.</li>
           </ul>
         </dd>
       </dl>
@@ -208,7 +208,7 @@
         <dt>핵심 성과</dt>
         <dd>
           <ul class="detail-bullets">
-            <li>대규모 트래픽·고보안 Private 엔터프라이즈 운영(Production) 환경의 OpenShift 클러스터 구성·동작에 대한 실무적 이해도 제고, APM 기반 성능 분석 모니터링 역량 강화.</li>
+            <li>대규모 트래픽·고보안 Private 엔터프라이즈 운영(Production) 환경의 OpenShift 클러스터 구성·동작에 대한 실무적 이해도 제고 APM 기반 성능 분석 모니터링 역량 강화.</li>
           </ul>
         </dd>
       </dl>
@@ -228,14 +228,14 @@
         <dt>개요</dt>
         <dd>
           <ul class="detail-bullets">
-            <li>CentOS 7.9 EOL 대응, Rocky Linux 9.4 기반 신규 인프라 환경으로 이관.</li>
+            <li>CentOS 7.9 EOL 대응 Rocky Linux 9.4 기반 신규 인프라 환경으로 이관.</li>
             <li>서비스별 WEB 2대·WAS 2대(인스턴스 2ea) 구조로 재구축.</li>
           </ul>
         </dd>
         <dt>핵심 성과</dt>
         <dd>
           <ul class="detail-bullets">
-            <li>EOL 대상 OS 이관으로 보안 취약점 리스크 제거, WAS 멀티 인스턴스 구성으로 시스템 고가용성 확보.</li>
+            <li>EOL 대상 OS 이관으로 보안 취약점 리스크 제거 WAS 멀티 인스턴스 구성으로 시스템 고가용성 확보.</li>
           </ul>
         </dd>
       </dl>
@@ -256,7 +256,7 @@
         <dt>개요</dt>
         <dd>
           <ul class="detail-bullets">
-            <li>CentOS 7.9 EOL 대응, Rocky Linux 9.6 기반 신규 인프라로 학사시스템 재구축.</li>
+            <li>CentOS 7.9 EOL 대응 Rocky Linux 9.6 기반 신규 인프라로 학사시스템 재구축.</li>
             <li>학사 트래픽 분산을 위한 WEB 4대-WAS 8대 로드밸런싱과 Infinispan 세션 클러스터링(2대) 연동.</li>
           </ul>
         </dd>
