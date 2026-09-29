@@ -46,10 +46,10 @@
         <dt>역할</dt>
         <dd>
           <ul class="detail-bullets">
-            <li>플랫폼 엔지니어(모니터링 스택 아키텍처 설계 및 k8s 매니페스트 작성·배포 전담)</li>
-            <li>DGX 서버 사전 구성: 포트 충돌(9100 vLLM 점유)로 node_exporter를 :9101로 분리 GB10 hwmon 콜렉터 비활성화 후 <code>nvidia-smi</code> 기반 GPU textfile collector 스크립트·systemd 서비스 작성(수집 시간 0.07초로 단축)</li>
-            <li>로그 파이프라인 구성: DGX rsyslog omfwd(RFC5424 + octet-counted) &rarr; Alloy NodePort 30514 &rarr; relabel(host/app/level/facility) &rarr; Loki push</li>
-            <li>Grafana 데이터소스·대시보드 자동 프로비저닝 및 HAProxy Ingress(TLS) 연동</li>
+            <li><strong>총괄:</strong> 플랫폼 엔지니어로서 모니터링 스택 아키텍처 설계 및 k8s 매니페스트 작성·배포 전담</li>
+            <li><strong>DGX 서버 사전 구성:</strong> 포트 충돌(9100 vLLM 점유)로 node_exporter를 :9101로 분리, GB10 hwmon 콜렉터 비활성화 후 <code>nvidia-smi</code> 기반 GPU textfile collector 스크립트·systemd 서비스 작성(수집 시간 0.07초로 단축)</li>
+            <li><strong>로그 파이프라인 구성:</strong> DGX rsyslog omfwd(RFC5424 + octet-counted) &rarr; Alloy NodePort 30514 &rarr; relabel(host/app/level/facility) &rarr; Loki push</li>
+            <li><strong>대시보드·연동:</strong> Grafana 데이터소스·대시보드 자동 프로비저닝 및 HAProxy Ingress(TLS) 연동</li>
           </ul>
         </dd>
         <dt>성과</dt>
