@@ -686,3 +686,36 @@ section.page-section h2 {
   display: flex;
   gap: 16px;
 }
+
+/* Career timeline: grouped, numbered work list */
+.career-group {
+  margin: 20px 0 8px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid var(--color-border);
+  font-size: 0.95rem;
+  color: var(--color-text-muted);
+}
+
+.career-list {
+  margin: 0;
+  padding-left: 22px;
+}
+
+.career-list > li {
+  margin-bottom: 14px;
+}
+
+.career-list .career-desc {
+  display: block;
+  margin-top: 2px;
+}
+
+.career-list .tag-list {
+  margin-top: 6px;
+}
+
+.career-list .meta-inline {
+  color: var(--color-text-muted);
+  font-size: 0.85rem;
+  margin-left: 6px;
+}
