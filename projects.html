@@ -43,14 +43,16 @@
         <dt>개요</dt>
         <dd>
           <ul class="detail-bullets">
-            <li>Engineer Team에서 엔지니어별로 Claude ChatGPT 등 생성형 AI 도구를 개별 사용하던 환경으로 AI 활용 방식과 자동화 Skill이 개인 단위에 머물러 팀 자산으로 축적되기 어려운 구조적 문제.</li>
-            <li>사내 GPU 서버 LLM을 팀 전체가 공용 활용할 수 있는 통합 AI Agent 환경 필요에 따라 k8s 클러스터에 Engineer Team 공용 Hermes Agent 구축 및 Slack Bot 연동.</li>
+            <li><strong>배경:</strong> Engineer Team에서 엔지니어별로 Claude, ChatGPT 등 생성형 AI 도구를 개별 사용.</li>
+            <li><strong>문제:</strong> AI 활용 방식과 자동화 Skill이 개인 단위에 머물러 팀 자산으로 축적되기 어려운 구조.</li>
+            <li><strong>해결:</strong> 사내 GPU 서버 LLM을 팀 전체가 공용 활용할 수 있는 통합 AI Agent 환경이 필요하여, k8s 클러스터에 Engineer Team 공용 Hermes Agent 구축 및 Slack Bot 연동.</li>
           </ul>
         </dd>
         <dt>핵심 성과</dt>
         <dd>
           <ul class="detail-bullets">
             <li>사내 k8s 클러스터 상시 운영으로 개인 PC 실행 여부와 무관한 24시간 접근 가능 환경 구축, Slack 연동으로 언제 어디서든 Hermes Agent 호출 체계 마련.</li>
+            <li>흩어져 있는 Skill, Cron을 하나의 Hermes Agent로 통합하여 엔지니어팀 공용으로 AI Agent 스킬 및 예약작업을 사용할 수 있게 하였으며, GPU 서버에 설치된 Local LLM을 사용하여 다양한 LLM 모델을 사용할 수 있도록 함.</li>
           </ul>
         </dd>
       </dl>
