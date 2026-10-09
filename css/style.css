@@ -729,7 +729,7 @@ section.page-section h2 {
 .career-list .career-sublist {
   margin: 6px 0 0;
   padding-left: 20px;
-  list-style: decimal;
+  list-style: disc;
 }
 
 .career-list .career-sublist > li {
