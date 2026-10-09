@@ -719,3 +719,25 @@ section.page-section h2 {
   font-size: 0.85rem;
   margin-left: 6px;
 }
+
+.career-company {
+  margin: -4px 0 0;
+  color: var(--color-text-muted);
+  font-size: 0.9rem;
+}
+
+.career-list .career-sublist {
+  margin: 6px 0 0;
+  padding-left: 20px;
+  list-style: decimal;
+}
+
+.career-list .career-sublist > li {
+  margin-bottom: 6px;
+}
+
+.career-list .career-sublist .tag-list {
+  display: inline-flex;
+  margin: 0 0 0 8px;
+  vertical-align: middle;
+}
