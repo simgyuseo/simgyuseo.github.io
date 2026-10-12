@@ -33,35 +33,42 @@
     </div>
 
     <article class="card project-card">
+      <div class="project-summary">
+        <div><span class="summary-label">역할</span><span>인프라 엔지니어 (WEB 4대·WAS 8대·CLUSTER 2대·APM 1대 학사 웹시스템 설치·구성)</span></div>
+        <div><span class="summary-label">핵심 성과</span><span>EOL 리스크 제거, 서버 다운 시에도 로그인 세션이 유지되는 무중단 가용성 확보</span></div>
+      </div>
       <dl class="project-detail">
-        <dt>개요</dt>
+        <dt>① 문제 발견</dt>
         <dd>
           <ul class="detail-bullets">
-            <li>인프라 환경 이관: CentOS 7.9 EOL에 대응하여 Rocky Linux 9.6 VM 서버 기반의 신규 인프라 환경 수립.</li>
-            <li>고가용성(HA) 아키텍처 구축: 학사 트래픽 분산을 위해 WEB 4대 - WAS 8대 구조의 로드밸런싱 설정 및 Infinispan 13.0.21(OpenJDK 11)을 이용한 세션 클러스터링(2대) 서버 연동.</li>
+            <li><strong>상황:</strong> 한국기술교육대학 학사시스템이 EOL 도래한 CentOS 7.9 기반으로 운영.</li>
+            <li><strong>문제:</strong> 보안 취약점 리스크와 함께, 학사 트래픽을 분산하고 특정 서버 장애에도 로그인 세션이 끊기지 않아야 하는 가용성 요구.</li>
           </ul>
         </dd>
-        <dt>역할</dt>
+        <dt>② 해결 방식</dt>
         <dd>
           <ul class="detail-bullets">
-            <li>인프라 엔지니어(RockyOS 9.6 VM 서버에 WEB 4대 WAS 8대 CLUSTER 2대 APM 1대 학사 웹시스템 설치 및 구성)</li>
+            <li><strong>이관:</strong> CentOS 7.9 EOL 대응으로 Rocky Linux 9.6 VM 서버 기반 신규 인프라 환경 수립.</li>
+            <li><strong>HA 구성:</strong> 학사 트래픽 분산을 위해 WEB 4대 - WAS 8대 로드밸런싱 설정 및 Infinispan 13.0.21(OpenJDK 11) 세션 클러스터링(2대) 서버 연동.</li>
+            <li><strong>튜닝:</strong> 외부 세션 저장소 클러스터링 환경 정밀 튜닝으로 서버 다운 시에도 세션 유지.</li>
           </ul>
         </dd>
-        <dt>성과</dt>
+        <dt>③ 성과</dt>
         <dd>
           <ul class="perf-list">
-            <li class="perf-item perf-tobe">보안 및 운영 안정성 확보: EOL 대상 OS 이관을 통해 보안 취약점 리스크 제거 및 지속 가능한 오픈소스 운영 기반 마련.</li>
-            <li class="perf-item perf-tobe">세션 유실 없는 무중단 가용성 확보: 외부 세션 저장소 서버인 세션 클러스터링 환경 정밀 튜닝을 통해 특정 서버 다운 시에도 학사 서비스의 로그인 세션 정보가 끊기지 않고 유지될 수 있도록 무중단 가용성 확보.</li>
+            <li class="perf-item perf-asis"><span class="perf-badge perf-badge-asis">AS-IS</span>EOL 대상 CentOS 7.9 운영으로 보안 취약점 리스크 존재</li>
+            <li class="perf-item perf-tobe"><span class="perf-badge perf-badge-tobe">TO-BE</span>EOL 대상 OS 이관을 통해 보안 취약점 리스크 제거 및 지속 가능한 오픈소스 운영 기반 마련</li>
+            <li class="perf-item perf-tobe"><span class="perf-badge perf-badge-tobe">TO-BE</span>세션 클러스터링 환경 정밀 튜닝으로 특정 서버 다운 시에도 학사 서비스 로그인 세션이 유지되는 무중단 가용성 확보</li>
           </ul>
         </dd>
-        <dt>개선점</dt>
+        <dt>④ 한계와 개선</dt>
         <dd>
           <ul class="detail-bullets">
             <li>미들웨어(Apache/Tomcat) 버전 선정만으로는 부족하며 OS &rarr; JDK &rarr; WAS &rarr; 애플리케이션 전 구간의 종속성·교차 호환성 사전 검증이 인프라 안정성의 핵심임을 확인.</li>
             <li>향후 인프라 설계 시 종속성·교차 호환성 사전 조사를 통한 시행착오 최소화 필요성 인식.</li>
           </ul>
         </dd>
-        <dt>프로젝트 아키텍처 (Archify 스킬)</dt>
+        <dt>⑤ 프로젝트 아키텍처 (Archify 스킬)</dt>
         <dd>
           <figure class="architecture-diagram">
             <figcaption>AS-IS (CentOS 7.9)</figcaption>
@@ -76,7 +83,7 @@
             </a>
           </figure>
         </dd>
-        <dt>테스트 및 기술정리</dt>
+        <dt>⑥ 테스트 및 기술정리</dt>
         <dd>
           <ul class="detail-bullets">
             <li><a href="https://proximal-freckle-db1.notion.site/Apache-httpd-33b8245cacdb802fa8fee995c9211e5a" target="_blank" rel="noopener">Apache httpd</a></li>

@@ -38,24 +38,28 @@
     </div>
 
     <article class="card project-card">
+      <div class="project-summary">
+        <div><span class="summary-label">역할</span><span>플랫폼 엔지니어 · AI-Engineer (설계·배포·연동 전담)</span></div>
+        <div><span class="summary-label">핵심 성과</span><span>개인 PC와 무관한 24시간 Slack 호출 환경, 흩어진 Skill·Cron을 팀 공용 자산으로 통합</span></div>
+      </div>
       <dl class="project-detail">
-        <dt>개요</dt>
+        <dt>① 문제 발견</dt>
         <dd>
           <ul class="detail-bullets">
-            <li>Engineer Team에서 엔지니어별로 Claude ChatGPT 등 생성형 AI 도구를 개별 사용하던 환경으로 개인 단위 생산성은 확보되나 AI 환경·프롬프트가 엔지니어마다 상이하고 업무 자동화 Skill도 개인 환경에 분산되어 팀 자산으로 축적되기 어려운 구조적 문제 존재.</li>
-            <li>사내 GPU 서버에 구축된 LLM 모델을 특정 사용자·인터페이스에 한정하지 않고 Engineer Team 전체가 공용 활용할 수 있는 통합 AI Agent 환경 필요에 따라 사내 Kubernetes 클러스터에 팀 공용 Hermes Agent 구축 및 Slack Bot 연동.</li>
-            <li>Hermes Agent를 선택한 핵심 이유는 하나의 Agent 환경에서 LLM 연결·Skill 실행·대화 세션 관리·외부 메신저 연동 등을 통합할 수 있다는 점. 특히 업무에 필요한 반복 절차를 Skill 형태로 구현해 공용 배포함으로써 개인의 AI 활용 노하우를 팀의 재사용 가능한 기술 자산으로 전환할 수 있다고 판단.</li>
-            <li>사내 LLM과 외부 AI 모델을 하나의 Agent 인터페이스에서 활용하고 반복 엔지니어링 업무를 Skill로 표준화해 팀원 누구나 재사용 가능하도록 하는 것을 핵심 목표로 설정 Slack 연결을 통해 별도 접속 환경 없이 24시간 기존 협업 환경에서 Agent 호출이 가능하도록 구성.</li>
+            <li><strong>상황:</strong> Engineer Team이 Claude, ChatGPT 등 생성형 AI 도구를 엔지니어별로 개별 사용. 개인 생산성은 확보되나 AI 환경·프롬프트가 엔지니어마다 상이.</li>
+            <li><strong>문제:</strong> 업무 자동화 Skill·Cron·Prompt가 개인 PC 등 개별 환경에 분산되어 공유·재사용·표준화가 어렵고, 개인 PC 상태에 영향받아 상시 서비스 형태 제공이 불가능한 구조.</li>
+            <li><strong>방치 시:</strong> 개인의 AI 활용 노하우가 팀의 재사용 가능한 기술 자산으로 전환되지 못하고 개인 단위에 머묾.</li>
           </ul>
         </dd>
-        <dt>역할</dt>
+        <dt>② 해결 방식</dt>
         <dd>
           <ul class="detail-bullets">
-            <li>플랫폼 엔지니어 및 AI-Engineer(사내 k8s 클러스터에 Hermes Agent StatefulSet 배포 및 Hermes Agent Local LLM 모델 연동)</li>
-            <li>Slack Bot과 연동하여 24시간 내내 언제 어디서든 Engineer 팀 공용으로 Hermes Agent에 등록된 Skill Cron 등을 공용 자산으로 축적할 수 있게 함</li>
+            <li><strong>선택 근거:</strong> 하나의 Agent 환경에서 LLM 연결·Skill 실행·대화 세션 관리·외부 메신저 연동을 통합할 수 있어 Hermes Agent 선택. 반복 절차를 Skill로 구현해 공용 배포하면 개인 노하우를 팀 자산으로 전환 가능하다고 판단.</li>
+            <li><strong>해결 과정:</strong> ① 사내 k8s 클러스터에 Helm Chart·ConfigMap·Secret 기반 Hermes Agent StatefulSet 배포 → ② GPU 서버 Local LLM을 모델 Provider로 연결 → ③ Slack Bot 연동으로 별도 접속 환경 없이 기존 협업 채널에서 호출 → ④ 분산된 Skill·Cron을 단일 Agent로 통합.</li>
+            <li><strong>AI 활용 지점:</strong> 사내 LLM(gpt-oss-20b 등)과 외부 모델(gpt-4.1)을 하나의 Agent 인터페이스에서 선택해 사용하고, 반복 엔지니어링 업무를 Skill로 표준화.</li>
           </ul>
         </dd>
-        <dt>성과</dt>
+        <dt>③ 성과</dt>
         <dd>
           <ul class="perf-list">
             <li class="perf-item perf-asis"><span class="perf-badge perf-badge-asis">AS-IS</span>AI 도구의 개인화·파편화 &mdash; 엔지니어마다 Claude ChatGPT 등을 개별적으로 사용하여 프롬프트 활용 방법 업무 노하우가 개인 단위에 머무르는 문제.</li>
@@ -69,13 +73,13 @@
             <li class="perf-item perf-tobe"><span class="perf-badge perf-badge-tobe">TO-BE</span>사내 LLM의 활용 범위 확대 &mdash; GPU 서버에 배포된 LLM 모델을 Hermes Agent의 모델 Provider와 연결하여 특정 사용자에 한정되지 않는 Engineer Team 공통 활용 인터페이스 구축.</li>
           </ul>
         </dd>
-        <dt>개선점</dt>
+        <dt>④ 한계와 개선</dt>
         <dd>
           <ul class="detail-bullets">
             <li>사용 빈도에 비례해 조직의 업무 절차와 지식이 축적되는 구조로 Skill·Cron 자산화를 위한 지속적이고 적극적인 활용 필요.</li>
           </ul>
         </dd>
-        <dt>프로젝트 아키텍처 (Archify 스킬)</dt>
+        <dt>⑤ 프로젝트 아키텍처 (Archify 스킬)</dt>
         <dd>
           <figure class="architecture-diagram">
             <a href="assets/arch/hermes-agent-slack-k8s.png" target="_blank" rel="noopener" title="원본 크기로 보기">
@@ -105,7 +109,7 @@
             </li>
           </ul>
         </dd>
-        <dt>테스트 및 기술정리</dt>
+        <dt>⑥ 테스트 및 기술정리</dt>
         <dd>
           <ul class="detail-bullets">
             <li><a href="https://proximal-freckle-db1.notion.site/k8s-Cluster-Engineer-Team-Hermes-Agent-Slack-3de8245cacdb801b973ae5494acb03ec" target="_blank" rel="noopener">k8s Cluster Engineer Team Hermes Agent Slack 연동</a></li>

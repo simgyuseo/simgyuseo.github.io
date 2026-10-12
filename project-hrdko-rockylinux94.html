@@ -32,34 +32,41 @@
     </div>
 
     <article class="card project-card">
+      <div class="project-summary">
+        <div><span class="summary-label">역할</span><span>인프라 엔지니어 (서비스당 WEB 2대·WAS 2대, 서버별 2 인스턴스 설치·구성)</span></div>
+        <div><span class="summary-label">핵심 성과</span><span>EOL 보안 리스크 제거, WAS 서버별 멀티 인스턴스(2ea) 구성으로 고가용성(HA) 확보</span></div>
+      </div>
       <dl class="project-detail">
-        <dt>개요</dt>
+        <dt>① 문제 발견</dt>
         <dd>
           <ul class="detail-bullets">
-            <li>인프라 환경 이관: CentOS 7.9 EOL에 대응하여 Rocky Linux 9.4 VM 서버 기반의 신규 인프라 환경 수립.</li>
+            <li><strong>상황:</strong> 한국직업능력심사평가원 웹 시스템이 EOL 도래한 CentOS 7.9 기반으로 운영.</li>
+            <li><strong>문제:</strong> EOL로 보안 업데이트가 중단되어 보안 취약점 리스크가 있고 지속 가능한 운영 기반이 필요.</li>
           </ul>
         </dd>
-        <dt>역할</dt>
+        <dt>② 해결 방식</dt>
         <dd>
           <ul class="detail-bullets">
-            <li>인프라 엔지니어(각 서비스당 WEB 2대 WAS 2대·서버별 2ea 인스턴스 설치 및 구성)</li>
+            <li><strong>접근:</strong> CentOS 7.9 EOL에 대응하여 Rocky Linux 9.4 VM 서버 기반의 신규 인프라 환경 수립.</li>
+            <li><strong>해결 과정:</strong> 서비스당 WEB 2대·WAS 2대, 서버별 2ea 인스턴스를 설치·구성하고 WEB-WAS 간 mod_proxy_http 모듈의 LoadBalancer 알고리즘으로 인스턴스·서버 간 부하분산.</li>
           </ul>
         </dd>
-        <dt>성과</dt>
+        <dt>③ 성과</dt>
         <dd>
           <ul class="perf-list">
-            <li class="perf-item perf-tobe">보안 및 운영 안정성 확보: EOL 대상 OS 이관을 통해 보안 취약점 리스크 제거 및 지속 가능한 오픈소스 운영 기반 마련.</li>
-            <li class="perf-item perf-tobe">WAS 서버별 멀티 인스턴스(2ea) 구성을 통한 시스템 고가용성(HA) 확보 WEB-WAS 인스턴스 간의 mod_proxy_http 모듈을 이용한 LoadBalancer 알고리즘을 통해 WAS 인스턴스 및 서버간의 부하분산 처리.</li>
+            <li class="perf-item perf-asis"><span class="perf-badge perf-badge-asis">AS-IS</span>EOL 대상 CentOS 7.9 운영으로 보안 취약점 리스크 존재</li>
+            <li class="perf-item perf-tobe"><span class="perf-badge perf-badge-tobe">TO-BE</span>EOL 대상 OS 이관을 통해 보안 취약점 리스크 제거 및 지속 가능한 오픈소스 운영 기반 마련</li>
+            <li class="perf-item perf-tobe"><span class="perf-badge perf-badge-tobe">TO-BE</span>WAS 서버별 멀티 인스턴스(2ea) 구성으로 고가용성(HA) 확보 및 mod_proxy_http LoadBalancer 알고리즘 기반 부하분산 처리</li>
           </ul>
         </dd>
-        <dt>개선점</dt>
+        <dt>④ 한계와 개선</dt>
         <dd>
           <ul class="detail-bullets">
             <li>겉보기에 정상 구축된 시스템이라도 트래픽 규모에 맞는 OS 커널 파라미터 튜닝 없이는 안정적 운영이 어렵다는 점을 확인.</li>
             <li>미들웨어 설정과 함께 리눅스 커널 파라미터까지 구축 점검 범위에 포함할 필요성 확인.</li>
           </ul>
         </dd>
-        <dt>프로젝트 아키텍처 (Archify 스킬)</dt>
+        <dt>⑤ 프로젝트 아키텍처 (Archify 스킬)</dt>
         <dd>
           <figure class="architecture-diagram">
             <figcaption>AS-IS</figcaption>
@@ -74,7 +81,7 @@
             </a>
           </figure>
         </dd>
-        <dt>테스트 및 기술정리</dt>
+        <dt>⑥ 테스트 및 기술정리</dt>
         <dd>
           <ul class="detail-bullets">
             <li><a href="https://proximal-freckle-db1.notion.site/Apache-httpd-33b8245cacdb802fa8fee995c9211e5a" target="_blank" rel="noopener">Apache httpd</a></li>

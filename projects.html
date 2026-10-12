@@ -22,8 +22,10 @@
 <main class="container">
   <section class="page-section">
     <h2>Project</h2>
-    <p class="meta">진행한 프로젝트를 정리합니다. 각 프로젝트를 클릭하면 상세 내용을 확인할 수 있습니다.</p>
+    <p class="meta">각 프로젝트를 &lsquo;문제 발견 &rarr; 해결 방식 &rarr; 성과 &rarr; 한계와 개선&rsquo; 흐름으로 정리했습니다. 자세히 보기에서 전체 과정을 확인할 수 있습니다.</p>
 
+    <h3 class="project-group-title">AI · 자동화 프로젝트</h3>
+    <p class="meta project-group-desc">문제를 직접 발견하고 AI·자동화로 해결한 프로젝트</p>
     <article class="card project-card">
       <h3>[AI-Engineer] k8s 클러스터 기반 Engineer Team 공용 Hermes Agent 플랫폼 구축 및 Slack 연동</h3>
       <p class="meta">2026.08</p>
@@ -39,26 +41,13 @@
         <span class="tag">QWen3.8-Flash-Next</span>
         <span class="tag">Slack</span>
       </div>
-      <dl class="project-detail">
-        <dt>개요</dt>
-        <dd>
-          <ul class="detail-bullets">
-            <li><strong>배경:</strong> Engineer Team에서 엔지니어별로 Claude, ChatGPT 등 생성형 AI 도구를 개별 사용.</li>
-            <li><strong>문제:</strong> AI 활용 방식과 자동화 Skill이 개인 단위에 머물러 팀 자산으로 축적되기 어려운 구조.</li>
-            <li><strong>해결:</strong> 사내 GPU 서버 LLM을 팀 전체가 공용 활용할 수 있는 통합 AI Agent 환경이 필요하여, k8s 클러스터에 Engineer Team 공용 Hermes Agent 구축 및 Slack Bot 연동.</li>
-          </ul>
-        </dd>
-        <dt>핵심 성과</dt>
-        <dd>
-          <ul class="detail-bullets">
-            <li>사내 k8s 클러스터 상시 운영으로 개인 PC 실행 여부와 무관한 24시간 접근 가능 환경 구축, Slack 연동으로 언제 어디서든 Hermes Agent 호출 체계 마련.</li>
-            <li>흩어져 있는 Skill, Cron을 하나의 Hermes Agent로 통합하여 엔지니어팀 공용으로 AI Agent 스킬 및 예약작업을 사용할 수 있게 하였으며, GPU 서버에 설치된 Local LLM을 사용하여 다양한 LLM 모델을 사용할 수 있도록 함.</li>
-          </ul>
-        </dd>
+      <dl class="project-brief">
+        <dt class="brief-problem">문제</dt><dd>엔지니어별로 AI 도구·Skill·Prompt가 개인 PC에 분산되어 팀 자산으로 축적·공유되기 어려움</dd>
+        <dt class="brief-solve">해결</dt><dd>사내 k8s 클러스터에 공용 Hermes Agent를 StatefulSet으로 상시 배포하고 Local LLM·Slack Bot 연동</dd>
+        <dt class="brief-result">성과</dt><dd>개인 PC와 무관한 24시간 Slack 호출 환경, 흩어진 Skill·Cron을 팀 공용 자산으로 통합</dd>
       </dl>
-      <a class="project-more" href="project-hermes-agent.html">자세히 보기 &rarr;</a>
+      <a class="project-more" href="project-hermes-agent.html">문제 발견부터 개선점까지 자세히 보기 &rarr;</a>
     </article>
-
     <article class="card project-card">
       <h3>[RKE2 k8s 클러스터 Grafana 모니터링 스택 구축] &mdash; Prometheus 메트릭 + Loki + Alloy syslog 파이프라인과 DGX Spark(GB10) 서버 연동</h3>
       <p class="meta">2026.07</p>
@@ -71,24 +60,13 @@
         <span class="tag">Alloy</span>
         <span class="tag">RKE2</span>
       </div>
-      <dl class="project-detail">
-        <dt>개요</dt>
-        <dd>
-          <ul class="detail-bullets">
-            <li>RKE2 클러스터에 <code>monitoring</code> 네임스페이스 신설 Prometheus+Loki+Alloy+Grafana 통합 모니터링 스택 구축.</li>
-            <li>사내 Local LLM 추론 서버 DGX Spark(GB10) 3대(대전 1·서울 2)를 하나의 대시보드에서 관측하도록 메트릭·로그 파이프라인 연동.</li>
-          </ul>
-        </dd>
-        <dt>핵심 성과</dt>
-        <dd>
-          <ul class="detail-bullets">
-            <li>GPU 온도·전력·클럭·냉각 스로틀과 vLLM 추론 지표를 Grafana 단일 화면에서 실시간 관측 가능한 환경 구축 및 Prometheus 30일/Loki 720h 보관 정책과 170Gi PVC로 장기 관측 기반 마련.</li>
-          </ul>
-        </dd>
+      <dl class="project-brief">
+        <dt class="brief-problem">문제</dt><dd>DGX Spark(GB10) 추론 서버 3대의 GPU 상태·시스템 로그를 서버마다 직접 접속해 확인해야 함</dd>
+        <dt class="brief-solve">해결</dt><dd>RKE2에 Prometheus·Loki·Alloy·Grafana 통합 모니터링 스택을 구축하고 메트릭·syslog 파이프라인 연동</dd>
+        <dt class="brief-result">성과</dt><dd>GPU 온도·전력·스로틀과 vLLM 추론 지표·로그를 Grafana 단일 화면에서 실시간 관측, 30일/720h 보관</dd>
       </dl>
-      <a class="project-more" href="project-rke2-grafana-monitoring.html">자세히 보기 &rarr;</a>
+      <a class="project-more" href="project-rke2-grafana-monitoring.html">문제 발견부터 개선점까지 자세히 보기 &rarr;</a>
     </article>
-
     <article class="card project-card">
       <h3>[AI-Engineer] 고객 문의와 연관된 과거 사내 유사 사례 검색(VectorDB) 및 1차 대응 Flowise AI 에이전트</h3>
       <p class="meta">2026.03.01 ~ 현재</p>
@@ -99,24 +77,15 @@
         <span class="tag">임베딩모델(dragonkue/BGE-m3-ko)</span>
         <span class="tag">Flowise</span>
       </div>
-      <dl class="project-detail">
-        <dt>개요</dt>
-        <dd>
-          <ul class="detail-bullets">
-            <li>고객 지원 요청 접수 시 과거 유사 사례를 선제 분석해 1차 대응 실마리와 긴급성·난이도·지원 방식을 제시하는 AI Support Agent 구축.</li>
-            <li>Flowise 기반 에이전트 파이프라인과 VectorDB(Qdrant)를 연동한 사내 지식베이스 통합 검색 환경 마련.</li>
-          </ul>
-        </dd>
-        <dt>핵심 성과</dt>
-        <dd>
-          <ul class="detail-bullets">
-            <li>분산된 과거 장애·문의 이력의 수동 검색 구조를 AI 통합 검색으로 대체하여 정보 탐색 시간 단축 음성/이메일/문자/이미지 4채널 통합 처리 파이프라인 확립.</li>
-          </ul>
-        </dd>
+      <dl class="project-brief">
+        <dt class="brief-problem">문제</dt><dd>구글 드라이브·노션 등에 분산된 과거 장애·문의 이력을 수동 검색하느라 초기 대응 지연</dd>
+        <dt class="brief-solve">해결</dt><dd>Flowise 에이전트와 VectorDB(Qdrant) 유사도 검색으로 과거 유사 사례·1차 실마리·긴급성·난이도 자동 제시</dd>
+        <dt class="brief-result">성과</dt><dd>사내 지식 통합 검색으로 정보 탐색 시간 단축, 음성/이메일/문자/이미지 4채널 통합 처리 파이프라인 확립</dd>
       </dl>
-      <a class="project-more" href="project-ai-engineering.html">자세히 보기 &rarr;</a>
+      <a class="project-more" href="project-ai-engineering.html">문제 발견부터 개선점까지 자세히 보기 &rarr;</a>
     </article>
-
+    <h3 class="project-group-title">인프라 구축 · 이관 프로젝트</h3>
+    <p class="meta project-group-desc">리스크를 사전 식별하고 안정적으로 구축·이관한 프로젝트</p>
     <article class="card project-card">
       <h3>[사회보장정보원][원내교육관리시스템] 런타임 JDK 11 환경 호환을 위한 세션 클러스터링 서버(Infinispan) 버전 업그레이드 재구축 작업 (7 → 13)</h3>
       <p class="meta">2026.01</p>
@@ -125,24 +94,13 @@
         <span class="tag">Infinispan 13</span>
         <span class="tag">JDK 11</span>
       </div>
-      <dl class="project-detail">
-        <dt>개요</dt>
-        <dd>
-          <ul class="detail-bullets">
-            <li>원내교육관리시스템 런타임 자바 버전이 JDK 11로 전환되며 기존 외부 세션 저장소(Infinispan 7)와 호환성 문제 발생.</li>
-            <li>JDK 11 런타임에 맞춰 Infinispan 13으로 세션 클러스터링 서버 재구축.</li>
-          </ul>
-        </dd>
-        <dt>핵심 성과</dt>
-        <dd>
-          <ul class="detail-bullets">
-            <li>JDK 11 환경에 맞는 세션 저장소 infinispan13 버전 설치로 사용자 세션 유실 없는 안정적 서비스 환경 확보.</li>
-          </ul>
-        </dd>
+      <dl class="project-brief">
+        <dt class="brief-problem">문제</dt><dd>외부 세션 저장소(Infinispan 7)가 런타임 JDK 11 환경과 호환되지 않음</dd>
+        <dt class="brief-solve">해결</dt><dd>세션 클러스터링 서버를 Infinispan 13으로 업그레이드하여 재구축</dd>
+        <dt class="brief-result">성과</dt><dd>런타임 JDK에 맞는 세션 서버 환경으로 사용자 세션 유실 없는 안정적 서비스 환경 구축</dd>
       </dl>
-      <a class="project-more" href="project-nhis-infinispan-downgrade.html">자세히 보기 &rarr;</a>
+      <a class="project-more" href="project-nhis-infinispan-downgrade.html">문제 발견부터 개선점까지 자세히 보기 &rarr;</a>
     </article>
-
     <article class="card project-card">
       <h3>[국군재정관리단][온나라 시스템] WEB(JBCS-httpd24-2.4.29)/WAS(JBOSS-EAP6.4) 시스템 구축 POC</h3>
       <p class="meta">2025.07 ~ 2025.08</p>
@@ -151,48 +109,26 @@
         <span class="tag">JBOSS-EAP6.4</span>
         <span class="tag">rhel8.8</span>
       </div>
-      <dl class="project-detail">
-        <dt>개요</dt>
-        <dd>
-          <ul class="detail-bullets">
-            <li>국군재정관리단 온나라 시스템 본 사업 착수 전 WEB(JBCS-httpd24)·WAS(JBOSS-EAP6.4) 아키텍처의 안정성과 정합성을 검증하는 POC 수행.</li>
-            <li>VM 2대에 JBCS/JBOSS-EAP 설치·구성 실제 운영 이전 인프라 리스크 최소화.</li>
-          </ul>
-        </dd>
-        <dt>핵심 성과</dt>
-        <dd>
-          <ul class="detail-bullets">
-            <li>본 사업 착수 전 아키텍처 안정성·정합성,OS 취약점,WAS 와 연동된 DB 계정 암호화 등 사전 검증을 전담 수행하여 인프라 리스크 최소화에 기여.</li>
-          </ul>
-        </dd>
+      <dl class="project-brief">
+        <dt class="brief-problem">문제</dt><dd>실제 운영 구축 전에 JBCS/JBOSS-EAP 아키텍처의 안정성·정합성 사전 검증이 필요</dd>
+        <dt class="brief-solve">해결</dt><dd>RHEL 8.8 VM 2대에 JBCS-httpd24와 JBOSS-EAP 6.4를 설치·구성하여 POC 테스트·기술검증 수행</dd>
+        <dt class="brief-result">성과</dt><dd>본 사업 진행 시 발생할 수 있는 인프라 리스크 최소화에 기여</dd>
       </dl>
-      <a class="project-more" href="project-jfmc-onnara-poc.html">자세히 보기 &rarr;</a>
+      <a class="project-more" href="project-jfmc-onnara-poc.html">문제 발견부터 개선점까지 자세히 보기 &rarr;</a>
     </article>
-
     <article class="card project-card">
       <h3>[경기도교육청][홈페이지재구축프로젝트] OpenShift Cluster 기술지원 - 부사수</h3>
       <p class="meta">2025.05.09 ~ 2025.07.22</p>
       <div class="tag-list">
         <span class="tag">OpenShift</span>
       </div>
-      <dl class="project-detail">
-        <dt>개요</dt>
-        <dd>
-          <ul class="detail-bullets">
-            <li>경기도교육청 홈페이지 재구축 사업의 신규 인프라 OpenShift Cluster 운영·안정화에 부사수로 참여 기술지원 수행.</li>
-            <li>Helm 배포 리소스 제한 설정 및 Jenkins CI 도구 설치 등 클러스터 운영 지원.</li>
-          </ul>
-        </dd>
-        <dt>핵심 성과</dt>
-        <dd>
-          <ul class="detail-bullets">
-            <li>istio-cni 파드 Unauthorized 오류 및 L4 장비-Pod CIDR 대역 충돌 등 운영 이슈 트러블슈팅으로 Private OpenShift Cluster 안정 운영에 기여.</li>
-          </ul>
-        </dd>
+      <dl class="project-brief">
+        <dt class="brief-problem">문제</dt><dd>신규 도입된 Private OpenShift Cluster 운영 중 파드 기동 실패, 지역 교육청 접속 불가 등 이슈 발생</dd>
+        <dt class="brief-solve">해결</dt><dd>원인 분석 후 kubeconfig 인증 정보 갱신·istio-cni rollout, L4 SNAT 적용으로 조치</dd>
+        <dt class="brief-result">성과</dt><dd>istio-cni Unauthorized 및 Client IP/Pod CIDR 중복 무한루프 이슈 해결, Private OpenShift 운영 경험 축적</dd>
       </dl>
-      <a class="project-more" href="project-gge-homepage-openshift.html">자세히 보기 &rarr;</a>
+      <a class="project-more" href="project-gge-homepage-openshift.html">문제 발견부터 개선점까지 자세히 보기 &rarr;</a>
     </article>
-
     <article class="card project-card">
       <h3>[국방부] 국방 온나라 2.0 클라우드 전환: 공군 OpenShift 및 APM 오픈 기술 지원 - 부사수</h3>
       <p class="meta">2025.02.26 ~ 2025.04.14</p>
@@ -200,23 +136,13 @@
         <span class="tag">OpenShift</span>
         <span class="tag">APM</span>
       </div>
-      <dl class="project-detail">
-        <dt>개요</dt>
-        <dd>
-          <ul class="detail-bullets">
-            <li>범정부 클라우드 전환 사업 '국방 온나라 2.0'의 공군 확산 구간에서 OpenShift 클러스터·APM 환경 오픈전 점검 및 기술지원 수행.</li>
-          </ul>
-        </dd>
-        <dt>핵심 성과</dt>
-        <dd>
-          <ul class="detail-bullets">
-            <li>대규모 트래픽·고보안 Private 엔터프라이즈 운영(Production) 환경의 OpenShift 클러스터 구성·동작에 대한 실무적 이해도 제고 및 APM 기반 성능 분석 모니터링 역량 강화.</li>
-          </ul>
-        </dd>
+      <dl class="project-brief">
+        <dt class="brief-problem">문제</dt><dd>국방 온나라 2.0 공군 확산 오픈 전 OpenShift·APM 환경 점검과 오픈 당일 실시간 관제 필요</dd>
+        <dt class="brief-solve">해결</dt><dd>부사수로 클러스터 사전 헬스체크(노드·Pod·ingress·PVC·SC)와 APM 대시보드 기반 트래픽·성능 모니터링 지원</dd>
+        <dt class="brief-result">성과</dt><dd>오픈 및 초기 안정화 기간 기술지원, 대규모 Private 운영 환경과 APM 성능 분석 실무 경험 확보</dd>
       </dl>
-      <a class="project-more" href="project-mnd-onnara-openshift.html">자세히 보기 &rarr;</a>
+      <a class="project-more" href="project-mnd-onnara-openshift.html">문제 발견부터 개선점까지 자세히 보기 &rarr;</a>
     </article>
-
     <article class="card project-card">
       <h3>[한국직업능력심사평가원] CentOS7.9 EOL로 인한 RockyOS 9.4 Apache/Tomcat/APM 웹시스템 구축 프로젝트</h3>
       <p class="meta">2025.02.20 ~ 2025.04.28</p>
@@ -226,24 +152,13 @@
         <span class="tag">Tomcat 9.0.102</span>
         <span class="tag">Rocky Linux 9.4</span>
       </div>
-      <dl class="project-detail">
-        <dt>개요</dt>
-        <dd>
-          <ul class="detail-bullets">
-            <li>CentOS 7.9 EOL 대응 Rocky Linux 9.4 기반 신규 인프라 환경으로 이관.</li>
-            <li>서비스별 WEB 2대·WAS 2대(인스턴스 2ea) 구조로 재구축.</li>
-          </ul>
-        </dd>
-        <dt>핵심 성과</dt>
-        <dd>
-          <ul class="detail-bullets">
-            <li>EOL 대상 OS 이관으로 보안 취약점 리스크 제거 Tomcat 서버1대당 멀티 인스턴스 구성으로 시스템 고가용성 확보 및 부하 분산 트래픽 구성 완료.</li>
-          </ul>
-        </dd>
+      <dl class="project-brief">
+        <dt class="brief-problem">문제</dt><dd>운영 OS CentOS 7.9 EOL로 보안 업데이트 중단에 따른 취약점·운영 리스크</dd>
+        <dt class="brief-solve">해결</dt><dd>Rocky Linux 9.4 기반으로 Apache/Tomcat 웹 시스템을 신규 구축하고 mod_proxy_http로 부하분산</dd>
+        <dt class="brief-result">성과</dt><dd>EOL 보안 리스크 제거, WAS 서버별 멀티 인스턴스(2ea) 구성으로 고가용성(HA) 확보</dd>
       </dl>
-      <a class="project-more" href="project-hrdko-rockylinux94.html">자세히 보기 &rarr;</a>
+      <a class="project-more" href="project-hrdko-rockylinux94.html">문제 발견부터 개선점까지 자세히 보기 &rarr;</a>
     </article>
-
     <article class="card project-card">
       <h3>[한국기술교육대학][학사시스템] CentOS7.9 EOL로 인한 RockyOS 9.6 Apache/Tomcat/CLUSTER/APM 웹 시스템 재구축 프로젝트</h3>
       <p class="meta">2024.12.02 ~ 2025.01</p>
@@ -254,22 +169,12 @@
         <span class="tag">OpenJDK 11</span>
         <span class="tag">Rocky Linux 9.6</span>
       </div>
-      <dl class="project-detail">
-        <dt>개요</dt>
-        <dd>
-          <ul class="detail-bullets">
-            <li>CentOS 7.9 EOL 대응 Rocky Linux 9.6 기반 신규 인프라로 학사시스템 재구축.</li>
-            <li>학사 트래픽 분산을 위한 WEB 4대-WAS 8대 로드밸런싱과 Infinispan 세션 클러스터링(2대) 연동.</li>
-          </ul>
-        </dd>
-        <dt>핵심 성과</dt>
-        <dd>
-          <ul class="detail-bullets">
-            <li>외부 세션 저장소 서버를 통해 세션 클러스터링 환경 정밀 튜닝으로 특정 서버 다운 시에도 학사 서비스가 정상 유지되는 무중단 가용성 확보.</li>
-          </ul>
-        </dd>
+      <dl class="project-brief">
+        <dt class="brief-problem">문제</dt><dd>운영 OS CentOS 7.9 EOL로 보안 리스크, 학사 트래픽 분산과 세션 유지 요구</dd>
+        <dt class="brief-solve">해결</dt><dd>Rocky Linux 9.6 기반 WEB 4 · WAS 8 로드밸런싱 구조와 Infinispan 세션 클러스터링(2대) 재구축</dd>
+        <dt class="brief-result">성과</dt><dd>EOL 리스크 제거, 서버 다운 시에도 로그인 세션이 유지되는 무중단 가용성 확보</dd>
       </dl>
-      <a class="project-more" href="project-kut-rockylinux89.html">자세히 보기 &rarr;</a>
+      <a class="project-more" href="project-kut-rockylinux89.html">문제 발견부터 개선점까지 자세히 보기 &rarr;</a>
     </article>
 
   </section>

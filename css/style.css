@@ -741,3 +741,79 @@ section.page-section h2 {
   margin: 0 0 0 8px;
   vertical-align: middle;
 }
+
+/* Project template: 목록 요약(문제/해결/성과) · 상세 요약 박스 · 그룹 제목 */
+.project-group-title {
+  margin: 36px 0 4px;
+  font-size: 1.25rem;
+}
+
+.project-group-title:first-of-type {
+  margin-top: 8px;
+}
+
+.project-group-desc {
+  margin: 0 0 16px;
+}
+
+.project-brief {
+  display: grid;
+  grid-template-columns: 64px 1fr;
+  gap: 10px 14px;
+  margin: 0;
+  align-items: start;
+}
+
+.project-brief dt {
+  font-size: 0.78rem;
+  font-weight: 800;
+  text-align: center;
+  padding: 3px 0;
+  border-radius: 999px;
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+}
+
+.project-brief dt.brief-problem { color: #b91c1c; border-color: #fca5a5; }
+.project-brief dt.brief-solve { color: var(--color-accent); border-color: var(--color-accent); }
+.project-brief dt.brief-result { color: #15803d; border-color: #86efac; }
+
+.project-brief dd {
+  margin: 0;
+  line-height: 1.6;
+}
+
+.project-summary {
+  display: grid;
+  gap: 8px;
+  margin-bottom: 24px;
+  padding: 14px 18px;
+  border: 1px solid var(--color-border);
+  border-left: 4px solid var(--color-accent);
+  border-radius: 8px;
+  background: var(--color-tag-bg);
+}
+
+.project-summary > div {
+  display: grid;
+  grid-template-columns: 80px 1fr;
+  gap: 12px;
+  line-height: 1.6;
+}
+
+.summary-label {
+  font-weight: 700;
+  color: var(--color-text-muted);
+}
+
+@media (prefers-color-scheme: dark) {
+  .project-brief dt.brief-problem { color: #fca5a5; border-color: #7f1d1d; }
+  .project-brief dt.brief-result { color: #86efac; border-color: #166534; }
+}
+
+@media (max-width: 640px) {
+  .project-brief { grid-template-columns: 1fr; gap: 4px; }
+  .project-brief dt { width: 56px; }
+  .project-brief dd { margin-bottom: 8px; }
+  .project-summary > div { grid-template-columns: 1fr; gap: 2px; }
+}
