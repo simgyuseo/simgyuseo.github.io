@@ -817,3 +817,127 @@ section.page-section h2 {
   .project-brief dd { margin-bottom: 8px; }
   .project-summary > div { grid-template-columns: 1fr; gap: 2px; }
 }
+
+/* Projects 목록: 상단 인덱스 · 카드 메타 줄 · 성과 강조 · 카드 하단(태그 + 링크) */
+.project-index {
+  margin: 20px 0 8px;
+  padding: 14px 20px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+}
+
+.project-index-group {
+  margin: 10px 0 4px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--color-text-muted);
+}
+
+.project-index-group:first-child {
+  margin-top: 0;
+}
+
+.project-index ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.project-index li + li {
+  border-top: 1px solid var(--color-border);
+}
+
+.project-index a {
+  display: grid;
+  grid-template-columns: 175px 150px 1fr;
+  gap: 12px;
+  padding: 7px 0;
+  font-size: 0.9rem;
+  color: var(--color-text);
+  align-items: baseline;
+}
+
+.project-index a:hover {
+  text-decoration: none;
+}
+
+.project-index a:hover .index-title {
+  color: var(--color-accent);
+}
+
+.index-period,
+.index-client {
+  color: var(--color-text-muted);
+  font-size: 0.82rem;
+}
+
+.index-title {
+  font-weight: 600;
+}
+
+.project-card {
+  scroll-margin-top: 80px;
+}
+
+.project-eyebrow {
+  margin: 0 0 6px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--color-text-muted);
+}
+
+.role-chip {
+  display: inline-block;
+  margin-left: 6px;
+  padding: 1px 8px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--color-text-muted);
+  border: 1px solid var(--color-border);
+  border-radius: 999px;
+  vertical-align: middle;
+}
+
+.project-eyebrow + h3 {
+  margin-bottom: 16px;
+  font-size: 1.15rem;
+}
+
+.project-brief dd.brief-result-text {
+  font-weight: 500;
+}
+
+.project-brief dd.brief-result-text strong {
+  font-weight: 800;
+}
+
+.project-card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 16px;
+  margin-top: 18px;
+  padding-top: 14px;
+  border-top: 1px solid var(--color-border);
+}
+
+.project-card .project-card-footer .tag-list {
+  margin: 0;
+  gap: 6px;
+}
+
+.project-card-footer .tag {
+  font-size: 0.75rem;
+  padding: 3px 9px;
+}
+
+.project-card-footer .project-more {
+  margin-top: 0;
+  white-space: nowrap;
+}
+
+@media (max-width: 640px) {
+  .project-index a { grid-template-columns: 1fr; gap: 0; }
+  .project-card-footer { flex-direction: column; align-items: flex-start; }
+}
