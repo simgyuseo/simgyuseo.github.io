@@ -806,9 +806,104 @@ section.page-section h2 {
   color: var(--color-text-muted);
 }
 
+/* Projects list: 2열 그리드 + 접이식 카드(요약 → 펼치기) */
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  align-items: start;
+  margin-top: 12px;
+}
+
+.project-grid .project-card {
+  margin-bottom: 0;
+  padding: 0;
+}
+
+.project-card summary {
+  position: relative;
+  display: block;
+  padding: 20px 48px 20px 22px;
+  cursor: pointer;
+  list-style: none;
+}
+
+.project-card summary::-webkit-details-marker { display: none; }
+
+.project-card summary::after {
+  content: "";
+  position: absolute;
+  top: 26px;
+  right: 22px;
+  width: 8px;
+  height: 8px;
+  border-right: 2px solid var(--color-text-muted);
+  border-bottom: 2px solid var(--color-text-muted);
+  transform: rotate(45deg);
+  transition: transform 0.15s;
+}
+
+.project-card details[open] > summary::after {
+  top: 30px;
+  transform: rotate(-135deg);
+}
+
+.project-card summary:hover h3 { color: var(--color-accent); }
+
+.project-card summary:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: -2px;
+  border-radius: var(--radius);
+}
+
+.project-card summary h3 {
+  margin: 0 0 6px;
+  font-size: 1rem;
+}
+
+.project-card summary .meta {
+  margin: 0 0 10px;
+}
+
+.project-headline {
+  margin: 0;
+  line-height: 1.55;
+  font-size: 0.92rem;
+}
+
+.brief-label {
+  display: inline-block;
+  margin-right: 8px;
+  padding: 1px 8px;
+  border-radius: 999px;
+  border: 1px solid #86efac;
+  color: #15803d;
+  font-size: 0.75rem;
+  font-weight: 800;
+}
+
+.project-body {
+  padding: 16px 22px 20px;
+  border-top: 1px solid var(--color-border);
+}
+
+.project-body .tag-list {
+  margin-top: 0;
+  margin-bottom: 16px;
+}
+
+.project-body .project-more {
+  margin-top: 12px;
+}
+
 @media (prefers-color-scheme: dark) {
   .project-brief dt.brief-problem { color: #fca5a5; border-color: #7f1d1d; }
   .project-brief dt.brief-result { color: #86efac; border-color: #166534; }
+  .brief-label { color: #86efac; border-color: #166534; }
+}
+
+@media (max-width: 800px) {
+  .project-grid { grid-template-columns: 1fr; }
 }
 
 @media (max-width: 640px) {
