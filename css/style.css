@@ -145,10 +145,10 @@ a:hover { text-decoration: underline; }
 }
 
 .hero .intro-box {
-  --intro-bg: #fff4d6;
-  --intro-text: #1f2937;
-  --intro-border: #f59e0b;
-  --intro-title: #b45309;
+  --intro-bg: #eef2ff;
+  --intro-text: #1e1b4b;
+  --intro-border: #2563eb;
+  --intro-title: #1d4ed8;
   margin-top: 20px;
   padding: 20px 24px;
   background: var(--intro-bg);
@@ -159,10 +159,10 @@ a:hover { text-decoration: underline; }
 
 @media (prefers-color-scheme: dark) {
   .hero .intro-box {
-    --intro-bg: #3a2f12;
-    --intro-text: #fff8e6;
-    --intro-border: #fbbf24;
-    --intro-title: #fbbf24;
+    --intro-bg: #202b45;
+    --intro-text: #e7ecff;
+    --intro-border: #5b8def;
+    --intro-title: #9db8ff;
   }
 }
 
@@ -217,6 +217,69 @@ a:hover { text-decoration: underline; }
   color: var(--color-text);
 }
 .btn-secondary:hover { border-color: var(--color-accent); text-decoration: none; }
+
+/* Hero CTA buttons: pulse + hover lift + arrow nudge */
+.hero-actions .btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 24px;
+  font-size: 1rem;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
+  animation: cta-pulse 2.4s ease-out infinite;
+}
+
+.hero-actions .btn-secondary {
+  border: 2px solid var(--color-accent);
+  color: var(--color-accent);
+  animation-delay: 1.2s;
+}
+
+.hero-actions .btn::after {
+  content: "\2192";
+  display: inline-block;
+  transition: transform 0.2s ease;
+  animation: cta-arrow 1.4s ease-in-out infinite;
+}
+
+.hero-actions .btn:hover,
+.hero-actions .btn:focus-visible {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px color-mix(in srgb, var(--color-accent) 35%, transparent);
+  animation-play-state: paused;
+  opacity: 1;
+}
+
+.hero-actions .btn-secondary:hover,
+.hero-actions .btn-secondary:focus-visible {
+  background: var(--color-accent);
+  color: var(--color-accent-contrast);
+}
+
+.hero-actions .btn:hover::after,
+.hero-actions .btn:focus-visible::after {
+  transform: translateX(5px);
+  animation: none;
+}
+
+@keyframes cta-pulse {
+  0%   { box-shadow: 0 0 0 0 color-mix(in srgb, var(--color-accent) 50%, transparent); }
+  70%  { box-shadow: 0 0 0 14px color-mix(in srgb, var(--color-accent) 0%, transparent); }
+  100% { box-shadow: 0 0 0 0 color-mix(in srgb, var(--color-accent) 0%, transparent); }
+}
+
+@keyframes cta-arrow {
+  0%, 100% { transform: translateX(0); }
+  50%      { transform: translateX(4px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-actions .btn,
+  .hero-actions .btn::after {
+    animation: none;
+    transition: none;
+  }
+}
 
 /* Sections */
 section.page-section {
