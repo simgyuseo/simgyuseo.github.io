@@ -132,6 +132,7 @@ a:hover { text-decoration: underline; }
 }
 
 .hero .eyebrow {
+  margin: 0 0 12px;
   color: var(--color-accent);
   font-weight: 600;
   font-size: 0.9rem;
@@ -175,8 +176,19 @@ a:hover { text-decoration: underline; }
 }
 
 .hero .intro-box p {
+  position: relative;
+  padding-left: 1.5em;
   color: var(--intro-text);
   font-weight: 700;
+}
+
+.hero .intro-box p::before {
+  content: "\25B6";
+  position: absolute;
+  left: 0;
+  top: 0.2em;
+  color: var(--intro-title);
+  font-size: 0.8em;
 }
 
 .hero .intro-box p:last-child {
