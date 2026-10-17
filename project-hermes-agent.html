@@ -34,7 +34,7 @@
         <dd>
           <ul class="detail-bullets">
             <li><strong>상황:</strong> Engineer Team이 Claude, ChatGPT 등 생성형 AI 도구를 엔지니어별로 개별 사용. 개인 생산성은 확보되나 AI 환경·프롬프트가 엔지니어마다 상이.</li>
-            <li><strong>문제:</strong> 업무 자동화 Skill·Cron·Prompt가 개인 PC 등 개별 환경에 분산되어 공유·재사용·표준화가 어렵고, 개인 PC 상태에 영향받아 상시 서비스 형태 제공이 불가능한 구조.</li>
+            <li><strong>문제:</strong> 업무 자동화 Skill·Cron·Prompt가 개인 PC 등 개별 환경에 분산되어 공유·재사용·표준화가 어렵고 개인 PC 상태에 영향받아 상시 서비스 형태 제공이 불가능한 구조.</li>
             <li><strong>방치 시:</strong> 개인의 AI 활용 노하우가 팀의 재사용 가능한 기술 자산으로 전환되지 못하고 개인 단위에 머묾.</li>
           </ul>
         </dd>
@@ -73,6 +73,15 @@
               <img src="assets/arch/hermes-agent-slack-k8s.png" alt="사내 k8s Engineer Team 공용 Hermes Agent 플랫폼 & Slack 연동 아키텍처" loading="lazy">
             </a>
           </figure>
+          <div class="arch-result">
+            <h4 class="arch-result-title">프로젝트 결과</h4>
+            <ol class="detail-bullets">
+              <li>사내 k8s 클러스터에 Helm Chart·ConfigMap·Secret 기반 Hermes Agent StatefulSet을 배포하여 개인 PC와 무관한 24시간 상시 운영 환경 구축.</li>
+              <li>GPU 서버의 Local LLM(gpt-oss-20b,qwen3.8-flash-next)을 모델 Provider로 연결하여 Engineer Team 공통 AI 활용 인터페이스 마련.</li>
+              <li>Slack Bot 연동으로 별도 접속 환경 없이 기존 협업 채널에서 Hermes Agent를 호출하는 업무 흐름 확보.</li>
+              <li>개인별로 분산되어 있던 Skill·Cron·Prompt를 단일 Agent로 통합하여 팀 공용 자산으로 재사용할 수 있는 기반 확보.</li>
+            </ol>
+          </div>
           <ul class="toggle-list">
             <li class="toggle-item">
               <button type="button" class="toggle-btn" aria-expanded="false" aria-controls="hermes-dashboard">
