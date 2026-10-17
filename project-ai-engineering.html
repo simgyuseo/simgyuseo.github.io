@@ -43,7 +43,7 @@
           <ul class="detail-bullets">
             <li><strong>접근:</strong> 접수된 문의를 AI가 선제 분석하여 과거 유사 사례의 기술지원·트러블슈팅을 연결하고 1차 실마리와 문의의 긴급성·난이도·지원 방식을 판단하는 AI Support Agent 설계.</li>
             <li><strong>해결 과정:</strong> ① 임베딩 모델(BGE-m3-ko)로 과거 이력을 벡터화해 VectorDB(Qdrant)에 적재 → ② 고객 문의를 프롬프트로 적용해 키워드·유사도 매칭으로 유사 History 검색 → ③ Flowise 에이전트 빌더 파이프라인으로 LLM 판단·응답 구성.</li>
-            <li><strong>AI 활용 지점:</strong> LangChain·Flowise 기반 에이전트에 Local LLM(gpt-oss-20b, gemma-4-26B)과 Azure OpenAI를 연결하여 유사 사례 요약과 1차 대응 방향 제시.</li>
+            <li><strong>AI 활용 지점:</strong> Flowise 기반 에이전트에 Local LLM을 연결하여 유사 사례 요약과 1차 대응 방향 제시.</li>
           </ul>
         </dd>
         <dt>③ 성과</dt>
