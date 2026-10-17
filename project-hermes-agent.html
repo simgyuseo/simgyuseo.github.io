@@ -43,7 +43,7 @@
           <ul class="detail-bullets">
             <li><strong>선택 근거:</strong> 하나의 Agent 환경에서 LLM 연결·Skill 실행·대화 세션 관리·외부 메신저 연동을 통합할 수 있어 Hermes Agent 선택. 반복 절차를 Skill로 구현해 공용 배포하면 개인 노하우를 팀 자산으로 전환 가능하다고 판단.</li>
             <li><strong>해결 과정:</strong> ① 사내 k8s 클러스터에 Helm Chart·ConfigMap·Secret 기반 Hermes Agent StatefulSet 배포 → ② GPU 서버 Local LLM을 모델 Provider로 연결 → ③ Slack Bot 연동으로 별도 접속 환경 없이 기존 협업 채널에서 호출 → ④ 분산된 Skill·Cron을 단일 Agent로 통합.</li>
-            <li><strong>AI 활용 지점:</strong> 사내 LLM(gpt-oss-20b 등)과 외부 모델(gpt-4.1)을 하나의 Agent 인터페이스에서 선택해 사용하고, 반복 엔지니어링 업무를 Skill로 표준화.</li>
+            <li><strong>AI 활용 지점:</strong> Local LLM(gpt-oss-20b,qwen3.8-flash-next)을 하나의 Agent 인터페이스에서 선택해 사용하고 반복 엔지니어링 업무를 Skill로 표준화.</li>
           </ul>
         </dd>
         <dt>③ 성과</dt>
