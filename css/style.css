@@ -696,20 +696,6 @@ section.page-section h2 {
   margin-top: 20px;
 }
 
-.architecture-diagram + .arch-result {
-  margin-top: 20px;
-}
-
-.arch-result-title {
-  margin: 0 0 8px;
-  font-size: 1rem;
-  font-weight: 600;
-}
-
-.arch-result + .toggle-list {
-  margin-top: 20px;
-}
-
 .architecture-diagram figcaption {
   font-weight: 600;
   margin-bottom: 8px;
