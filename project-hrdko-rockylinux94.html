@@ -27,7 +27,7 @@
 
     <article class="card project-card">
       <div class="project-summary">
-        <div><span class="summary-label">역할</span><span>인프라 엔지니어 (서비스당 WEB 2대·WAS 2대, 서버별 2 인스턴스 설치·구성)</span></div>
+        <div><span class="summary-label">역할</span><span>인프라 엔지니어 (서비스당 WEB 2대·WAS 2대, Tomcat Server당 멀티 인스턴스 설치·구성)</span></div>
       </div>
       <dl class="project-detail">
         <dt>① 문제 발견</dt>
@@ -35,13 +35,14 @@
           <ul class="detail-bullets">
             <li><strong>상황:</strong> 한국직업능력심사평가원 웹 시스템이 EOL 도래한 CentOS 7.9 기반으로 운영.</li>
             <li><strong>문제:</strong> EOL로 보안 업데이트가 중단되어 보안 취약점 리스크가 있고 지속 가능한 운영 기반이 필요.</li>
+            <li><strong>문제:</strong> Tomcat은 단일 인스턴스로 구동 중인 상태였고, 단일 인스턴스 아키텍처는 단일 장애점(SPOF)을 내포하고 있어 해당 인스턴스에 장애가 발생하면 서비스 중단으로 이어질 위험이 있었음.</li>
           </ul>
         </dd>
         <dt>② 해결 방식</dt>
         <dd>
           <ul class="detail-bullets">
-            <li><strong>접근:</strong> CentOS 7.9 EOL에 대응하여 Rocky Linux 9.4 VM 서버 기반의 신규 인프라 환경 수립.</li>
-            <li><strong>해결 과정:</strong> 서비스당 WEB 2대·WAS 2대, 서버별 2ea 인스턴스를 설치·구성하고 WEB-WAS 간 mod_proxy_http 모듈의 LoadBalancer 알고리즘으로 인스턴스·서버 간 부하분산.</li>
+            <li><strong>해결 과정:</strong> 각 직능평 서비스당 WEB 2대·WAS 2대를 설치·HA 구성하고 WEB-WAS 간 mod_proxy_http 모듈의 LoadBalancer 알고리즘으로 인스턴스 및 서버 간 부하분산.</li>
+            <li><strong>해결 과정:</strong> Tomcat 서버별 단일 인스턴스 운영에서 멀티 인스턴스로 구성하여 단일 장애점(SPOF)을 예방하고, 정상 구동 중인 인스턴스로 트래픽을 자동 우회하도록 개선.</li>
           </ul>
         </dd>
         <dt>③ 성과</dt>
