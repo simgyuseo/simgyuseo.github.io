@@ -27,7 +27,7 @@
 
     <article class="card project-card">
       <div class="project-summary">
-        <div><span class="summary-label">역할</span><span>인프라 엔지니어 (서비스당 WEB 2대·WAS 2대, Tomcat Server당 멀티 인스턴스 설치·구성)</span></div>
+        <div><span class="summary-label">역할</span><span>인프라 엔지니어 (서비스당 WEB 2대·Tomcat Servlet 2대, Tomcat Server당 멀티 인스턴스 설치·구성)</span></div>
       </div>
       <dl class="project-detail">
         <dt>① 문제 발견</dt>
@@ -41,7 +41,7 @@
         <dt>② 해결 방식</dt>
         <dd>
           <ul class="detail-bullets">
-            <li><strong>해결 과정:</strong> 각 직능평 서비스당 WEB 2대·WAS 2대를 설치·HA 구성하고 WEB-WAS 간 mod_proxy_http 모듈의 LoadBalancer 알고리즘으로 인스턴스 및 서버 간 부하분산.</li>
+            <li><strong>해결 과정:</strong> 각 직능평 서비스당 WEB 2대·Tomcat Servlet 2대를 설치·HA 구성하고 WEB-Tomcat Servlet 간 mod_proxy_http 모듈의 LoadBalancer 알고리즘으로 인스턴스 및 서버 간 부하분산.</li>
             <li><strong>해결 과정:</strong> Tomcat 서버별 단일 인스턴스 운영에서 멀티 인스턴스로 구성하여 단일 장애점(SPOF)을 예방하고 정상 구동 중인 인스턴스로 트래픽을 자동 우회하도록 개선.</li>
           </ul>
         </dd>
@@ -50,7 +50,7 @@
           <ul class="perf-list">
             <li class="perf-item perf-asis"><span class="perf-badge perf-badge-asis">AS-IS</span>EOL 대상 CentOS 7.9 운영으로 보안 취약점 리스크 존재</li>
             <li class="perf-item perf-tobe"><span class="perf-badge perf-badge-tobe">TO-BE</span>EOL 대상 OS 이관을 통해 보안 취약점 리스크 제거 및 지속 가능한 오픈소스 운영 기반 마련</li>
-            <li class="perf-item perf-tobe"><span class="perf-badge perf-badge-tobe">TO-BE</span>WAS 서버별 멀티 인스턴스(2ea) 구성으로 고가용성(HA) 확보 및 WEB-WAS 간 mod_proxy_http 모듈의 LoadBalancer 알고리즘 기반 부하분산 처리</li>
+            <li class="perf-item perf-tobe"><span class="perf-badge perf-badge-tobe">TO-BE</span>Tomcat Servlet 서버별 멀티 인스턴스(2ea) 구성으로 고가용성(HA) 확보 및 WEB-Tomcat Servlet 간 mod_proxy_http 모듈의 LoadBalancer 알고리즘 기반 부하분산 처리</li>
           </ul>
         </dd>
         <dt>④ 한계와 개선</dt>
