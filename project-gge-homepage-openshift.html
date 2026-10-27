@@ -43,7 +43,7 @@
           <ul class="detail-bullets">
             <li><strong>사례 1 (istio-cni):</strong> OSSM 2.4 이상에서 해결된 사안이나 kubeconfig 인증 정보 갱신 실패 등 불안정 요소로 OpenShift 4.16에서 발생할 수 있는 요소로 확인 &rarr; kubeconfig 인증 정보 갱신 후 istio-cni-node 파드 rollout.</li>
             <li><strong>사례 2 (CIDR 중복):</strong> Infra Node의 Layer4 Packet SRC에 Client IP가 직접 노출됨을 확인(정상적으로는 VIP 노출) &rarr; 해당 교육청 L4 장비에 SNAT(Source NAT) 설정을 적용하여 Pod IP 대역과 겹치지 않도록 조치.</li>
-            <li><strong>기술지원:</strong> Helm chart 배포 디플로이먼트의 메모리 Request/Limits 설정 지원.</li>
+            <li><strong>기술지원:</strong> 교육청 Pod의 애플리케이션 부하테스트를 통해 리소스 사용량 및 트래픽 기준으로 HPA(Scale-out,in) 설정 지원.</li>
           </ul>
         </dd>
         <dt>③ 성과</dt>
